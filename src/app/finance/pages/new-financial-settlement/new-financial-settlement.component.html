@@ -1,0 +1,63 @@
+<div class="new-financial-settlement-section">
+  <div class="border p-3 new-financial-settlement mb-3">
+    <app-table
+    type='newSettlement'
+      [tableData]="data"
+      [tableColumns]="columns"
+      [tableLabels]="labels"
+    ></app-table>
+  </div>
+
+  <div class="border p-3 accounts mb-5">
+    <p-fieldset legend="الحسابات">
+      <ul>
+        <li class="mb-2">
+          <span class="font-weight-bold">إجمالي عدد ساعات الشهر المعتمدة : </span>
+          <span class="time text-green-color font-weight-bold"
+            >150 ساعة
+            <span class="font-weight-bold font-weight-bold font-weight-bold">
+              43 دقيقة</span
+            ></span
+          >
+        </li>
+        <li class="mb-2">
+          <span class="font-weight-bold">سعر الساعة المعتمدة : </span>
+          <span class="time text-green-color font-weight-bold"
+            >50 ريال سعودي</span
+          >
+        </li>
+        <li class="mb-2">
+          <span class="font-weight-bold">إجمالي دخل الشهر : </span>
+          <span class="time text-green-color font-weight-bold"
+            >29912 ريال سعودي</span
+          >
+        </li>
+      </ul>
+    </p-fieldset>
+  </div>
+
+  <div class="text-center">
+    <button
+      class="btn text-white bg-green-color px-5 mb-5 font-weight-bold"
+      (click)="requestSettlement()"
+    >
+      تقديم طلب التسوية
+    </button>
+  </div>
+  <p-confirmDialog #cd [style]="{ width: '20vw' }" [closable]="false" >
+    <ng-template pTemplate="footer">
+      <button
+      class="greenBtn px-4 py-2 rounded"
+        type="button"
+        (click)="cd.accept()"
+      >تأكيد</button>
+      <button
+      class="border text-secondary px-4 py-2 bg-white rounded"
+        type="button"
+        (click)="cd.reject()"
+      >تجاهل</button>
+    </ng-template>
+  </p-confirmDialog>
+</div>
+
+

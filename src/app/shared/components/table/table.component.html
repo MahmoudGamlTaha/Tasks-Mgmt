@@ -1,0 +1,159 @@
+<p-table
+  [value]="tableData"
+  [paginator]="tableData.length < 10 ? false : true"
+  [rows]="10"
+  [showCurrentPageReport]="true"
+  responsiveLayout="stack"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [rowsPerPageOptions]="[10, 25, 50]"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th *ngFor="let label of tableLabels" class="text-end">
+        <ng-container
+          *ngIf="
+            label.search('مهام') != -1 || label.search('التسويات') != -1;
+            else labelTemplate
+          "
+        >
+          <span class="highlight-label ms-2">{{ label }} </span
+          ><span *ngIf="label.search('مهام') != -1"
+            >{{ tableData.length }} مهام</span
+          >
+        </ng-container>
+        <ng-template #labelTemplate>
+          {{ label }}
+        </ng-template>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-row>
+    <tr>
+      <ng-container
+        *ngIf="type == 'newSettlement'; else statusSettlementTemplate"
+      >
+        <td
+          *ngFor="let columnName of tableColumns"
+          class="text-end border-start position-relative"
+        >
+          <ng-container *ngIf="columnName != 'hoursCount'; else hoursTemplate">
+            <ng-container *ngIf="columnName != 'name'; else greenLabel">
+              {{ row[columnName] }}
+            </ng-container>
+            <ng-template #greenLabel>
+              <span class="text-green-color font-weight-bold"
+                ><i class="fas fa-check-circle text-green-color check"></i>
+                {{ row[columnName] }}</span
+              >
+            </ng-template>
+          </ng-container>
+          <ng-template #hoursTemplate>
+            <div class="d-inline-block text-center text-grey-color">
+              <label for="integeronly" class="d-block">Min</label>
+              <p-inputNumber
+                [(ngModel)]="row['minutes']"
+                [readonly]="true"
+                [max]="24"
+              ></p-inputNumber>
+            </div>
+            <span class="colon px-1">:</span>
+            <div class="d-inline-block text-center text-grey-color">
+              <label for="integeronly" class="d-block">Hr</label>
+              <p-inputNumber
+                [(ngModel)]="row['hours']"
+                [readonly]="true"
+                [max]="24"
+              ></p-inputNumber>
+            </div>
+
+            <button class="btn text-green-color play" disabled>
+              <i class="far fa-play-circle"></i>
+            </button>
+            <button class="btn text-grey-color replay" disabled>
+              <i class="fas fa-redo-alt"></i>
+            </button>
+          </ng-template>
+        </td>
+      </ng-container>
+      <ng-template #statusSettlementTemplate>
+        <td
+          *ngFor="let columnName of tableColumns"
+          class="text-end border-start position-relative"
+        >
+          <ng-container *ngIf="columnName == 'total'; else complaint">
+            <p>
+              إجمالي عدد ساعات الشهر المعتمدة :
+              <span class="text-green-color font-weight-bold">{{
+                row["total"].totalHoursInMonths
+              }}</span>
+            </p>
+            <p>
+              إجمالي عدد ساعات الشهر المعتمدة :
+              <span class="text-green-color font-weight-bold">{{
+                row["total"].priceHour
+              }}</span>
+            </p>
+            <p>
+              إجمالي عدد ساعات الشهر المعتمدة :
+              <span class="text-green-color font-weight-bold">{{
+                row["total"].totalIncome
+              }}</span>
+            </p>
+          </ng-container>
+
+          <ng-template #complaint>
+            <ng-container
+              *ngIf="columnName == 'complaint'; else statusTemplate"
+            >
+              <div
+                class="text-center"
+                *ngIf="row[columnName] == 1; else complaintSentTemplate"
+              >
+                <p class="text-danger" (click)="showDialog()"> طلب شكوي</p>
+              </div>
+              <ng-template #complaintSentTemplate>
+                <div class="text-center">
+                  <p class="text-success">تم تقديم طلب الشكوي</p>
+                </div>
+              </ng-template>
+            </ng-container>
+          </ng-template>
+          <ng-template #statusTemplate>
+            <ng-container *ngIf="columnName == 'status'; else showMissionsTemplate">
+              <span
+                class="alert font-weight-bold"
+                [ngClass]="{
+                  'alert-secondary text-dark': row[columnName] == 1,
+                  'alert-warning text-warning': row[columnName] == 2,
+                  'alert-success text-success': row[columnName] == 3
+                }"
+              >
+                {{
+                  row[columnName] == 1
+                    ? "تم الإرسال"
+                    : row[columnName] == 2
+                    ? "جاري المراجعة"
+                    : row[columnName] == 3
+                    ? "تمت التسوية"
+                    : ""
+                }}
+              </span>
+              <p *ngIf="row[columnName] == 3" class="mt-3">تفاصيل الدفع</p>
+            </ng-container>
+          </ng-template>
+          <ng-template #showMissionsTemplate>
+            <ng-container *ngIf="columnName == 'showMissions';else column">
+              <p class="text-success" (click)="showMissions()">إظهار المهام</p>
+            </ng-container>
+
+          </ng-template>
+
+          <ng-template #column>
+            {{ row[columnName] }}
+          </ng-template>
+        </td>
+      </ng-template>
+    </tr>
+  </ng-template>
+</p-table>
+

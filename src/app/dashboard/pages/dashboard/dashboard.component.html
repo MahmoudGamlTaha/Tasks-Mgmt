@@ -1,0 +1,152 @@
+<section class="dashboard py-4 px-3">
+  <div class="container-fluid">
+    <div class="row mb-4">
+      <div class="col-lg-4 col-md-6 mb-3">
+        <p-card>
+          <div class="row">
+            <div class="col-md-5">
+              <circle-progress
+                [showUnits]="false"
+                [maxPercent]="40"
+                [unitsFontSize]="'24'"
+                [unitsFontWeight]="'bold'"
+                [titleFontWeight]="'bold'"
+                [title]="'متبقي 32 ساعة'"
+                [titleFontSize]="'24'"
+                [titleColor]="'#1a498e'"
+                [percent]="8"
+                [radius]="100"
+                [outerStrokeWidth]="16"
+                [innerStrokeWidth]="16"
+                [outerStrokeColor]="'#1a498e'"
+                [innerStrokeColor]="'#d8f1e3'"
+                [animation]="true"
+                [animationDuration]="300"
+              ></circle-progress>
+            </div>
+            <div class="col-md-7 align-self-center">
+              <p class="card-title">إجمالي ساعات شهر نوفمبر</p>
+              <h1 class="card-value font-weight-bold mb-3">40 ساعه</h1>
+              <span class="alert alert-success">صالحه حتي 31/11/2021</span>
+            </div>
+          </div>
+        </p-card>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-3">
+        <p-card>
+          <div class="row">
+            <div class="col-md-5">
+              <circle-progress
+                [showUnits]="false"
+                [maxPercent]="100"
+                [unitsFontSize]="'24'"
+                [unitsFontWeight]="'bold'"
+                [titleFontWeight]="'bold'"
+                [title]="'3 مهام انتهت'"
+                [titleFontSize]="'24'"
+                [titleColor]="'#e1b943'"
+                [percent]="50"
+                [radius]="100"
+                [outerStrokeWidth]="16"
+                [innerStrokeWidth]="16"
+                [outerStrokeColor]="'#e1b943'"
+                [innerStrokeColor]="'#d8f1e3'"
+                [animation]="true"
+                [animationDuration]="300"
+              ></circle-progress>
+            </div>
+            <div class="col-md-7 align-self-center">
+              <p class="card-title">إجمالي المهام حتي الان</p>
+              <h1 class="card-value font-weight-bold mb-3">6 مهام</h1>
+              <span class="alert alert-success">طبيعي</span>
+            </div>
+          </div>
+        </p-card>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-3">
+        <p-card>
+          <div class="row">
+            <div class="col-md-5">
+              <circle-progress
+                [showUnits]="false"
+                [maxPercent]="100"
+                [unitsFontSize]="'24'"
+                [unitsFontWeight]="'bold'"
+                [titleFontWeight]="'bold'"
+                [title]="'4000 ريال.س'"
+                [titleFontSize]="'24'"
+                [titleColor]="'#801f11'"
+                [percent]="100"
+                [radius]="100"
+                [outerStrokeWidth]="16"
+                [innerStrokeWidth]="16"
+                [outerStrokeColor]="'#801f11'"
+                [innerStrokeColor]="'#d8f1e3'"
+                [animation]="true"
+                [animationDuration]="300"
+              ></circle-progress>
+            </div>
+            <div class="col-md-7 align-self-center">
+              <p class="card-title">إجمالي دخل الشهر المتوقع</p>
+              <h1 class="card-value font-weight-bold mb-3">4000 ريال.س</h1>
+            </div>
+          </div>
+        </p-card>
+      </div>
+    </div>
+    <hr />
+
+    <div class="row mb-4">
+      <div  [ngClass]="{'col-md-8':isExpanded,'col-12': !isExpanded}">
+        <div class="row">
+          <div class="col-12 position-relative">
+            <h3>
+              <span class="font-weight-bold">المهام الحالية</span>
+              <a href="" class="more-link text-dark">عرض الكل (22)</a>
+            </h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="mb-3" [ngClass]="{'col-md-6':isExpanded,'col-md-4': !isExpanded}">
+            <app-mission></app-mission>
+          </div>
+          <div class="mb-3" [ngClass]="{'col-md-6':isExpanded,'col-md-4': !isExpanded}">
+            <app-mission></app-mission>
+          </div>
+          <div class="mb-3" [ngClass]="{'col-md-6':isExpanded,'col-md-4': !isExpanded}">
+            <app-mission></app-mission>
+          </div>
+          <div class="mb-3" [ngClass]="{'col-md-6':isExpanded,'col-md-4': !isExpanded}">
+            <app-mission></app-mission>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div [ngClass]="{'col-md-8':isExpanded,'col-12': !isExpanded}">
+        <div class="row">
+          <div class="col-12 position-relative">
+            <h3>
+              <span class="font-weight-bold">المهام المفتوحة مؤخرا</span>
+              <a href="" class="more-link text-dark">عرض الكل (22)</a>
+            </h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3" [ngClass]="{'col-md-6': isExpanded,'col-md-4':!isExpanded}">
+            <app-mission></app-mission>
+          </div>
+          <div class="col-md-6 mb-3" [ngClass]="{'col-md-6': isExpanded,'col-md-4':!isExpanded}">
+            <app-mission></app-mission>
+          </div>
+          <div class="col-md-6 mb-3" [ngClass]="{'col-md-6': isExpanded,'col-md-4':!isExpanded}">
+            <app-mission></app-mission>
+          </div>
+          <div class="col-md-6 mb-3" [ngClass]="{'col-md-6': isExpanded,'col-md-4':!isExpanded}">
+            <app-mission></app-mission>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

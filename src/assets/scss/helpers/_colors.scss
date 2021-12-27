@@ -1,0 +1,11 @@
+$colors:('green':$greenColor,'grey':$greyColor,'lightgreen':$lightGreenColor);
+
+// Colors For text & background
+@each $name,$color in $colors {
+    .text-#{$name}-color{
+        color: $color !important;
+    }
+    .bg-#{$name}-color{
+        background: $color !important;
+    }
+}

@@ -1,0 +1,12 @@
+$numbers: 1, 2, 3, 4, 5, 6;
+
+// set Heading Font
+@each $number in $numbers {
+  h#{$number} {
+    font-family: $fontFamily !important;
+    // font-weight: bold !important;
+  }
+}
+.font-weight-bold{
+  font-weight: bold !important;
+}

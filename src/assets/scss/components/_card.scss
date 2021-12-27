@@ -1,0 +1,20 @@
+.p-card {
+  box-shadow: none !important;
+  border-radius: 30px;
+
+  &-body {
+    padding: 0.25rem !important;
+  }
+
+  &-content {
+    padding: 0 !important;
+
+    .card-title {
+      font-size: 14px;
+      color: #adadad;
+    }
+  }
+  &:hover{
+    box-shadow: 1px 1px 10px #ddd;
+  }
+}

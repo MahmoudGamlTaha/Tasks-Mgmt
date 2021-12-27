@@ -1,0 +1,38 @@
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "~ngx-bootstrap/datepicker/bs-datepicker";
+
+@import "helpers/reset";
+@import "helpers/variable";
+@import "helpers/colors";
+@import "helpers/heading";
+@import "components/buttons";
+@import "components/alert";
+@import "components/card";
+@import "components/progress";
+@import "components/tabview";
+@import "components/table";
+@import "components/inputs";
+@import "components/fieldset";
+@import "components/confirm";
+@import "components/fileupload";
+@import "layout/header";
+@import "layout/sidenav";
+@import "pages/dashboard";
+@import "pages/financial-settlement";
+*{
+  font-family: $fontFamily ;
+  font-weight: 500;
+}
+body {
+  direction: rtl;
+  font-size: 16px !important;
+  font-family: $fontFamily !important;
+
+}
+h2{
+  font-family: 'Cairo', sans-serif;
+}
+

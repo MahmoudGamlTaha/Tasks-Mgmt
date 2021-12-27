@@ -1,0 +1,33 @@
+.p-fileupload {
+  &-choose {
+    border: 2px solid $greenColor !important;
+    color: $greenColor !important;
+    background: #fff !important;
+  }
+
+  .p-button-icon-only {
+    width: 16px !important;
+    height: 16px !important;
+    background: #fff !important;
+    border-radius: 50% !important;
+    color: $greyColor !important;
+    padding: 10px !important;
+    border-color: $greyColor !important;
+  }
+
+  &-buttonbar {
+    background: #fff !important;
+    padding: 0 !important;
+    border: 0 !important;
+    margin-bottom: 10px;
+  }
+
+  &-content {
+    padding: 0 !important;
+    border: 0 !important;
+    
+  }
+}
+
+
+

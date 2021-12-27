@@ -1,0 +1,141 @@
+mat-sidenav-container {
+  height: 100%;
+}
+.collapsedSideNav{
+  li{
+    border: 4px solid transparent;
+    background: #fff;
+    transition: all 0.4s ease-in-out;
+    i {
+      border-radius: 5px;
+      padding:10px ;
+      margin-right: 0.35rem;
+
+    }
+    &:hover {
+      border-right: 4px solid $greenColor;
+      background: #1EB05D1A;
+    }
+  }
+  li.active{
+    border-right: 4px solid $greenColor;
+    background: #1EB05D1A;
+  }
+}
+.expandedSideNav{
+  li{
+    i {
+      border-radius: 5px;
+      padding:10px ;
+      margin-right: 0.35rem;
+      transition: all 0.4s ease-in-out;
+    }
+    &:hover {
+      i {
+        background: $greenColor;
+        color: #fff;
+      }
+    }
+  }
+  li.active{
+    i {
+      background: $greenColor;
+      color: #fff;
+    }
+  }
+}
+
+.p-accordion
+  .p-accordion-header:not(.p-disabled).p-highlight
+  .p-accordion-header-link,
+.p-accordion .p-accordion-header .p-accordion-header-link {
+  background: none;
+  border: none;
+  padding:15px  1.25rem;
+  font-size: 15px !important;
+  font-weight: 400;
+}
+.p-accordion
+  .p-accordion-header
+  .p-accordion-header-link
+  .p-accordion-toggle-icon {
+  position: absolute;
+  left: 5px;
+}
+.p-accordion
+  .p-accordion-header:not(.p-disabled)
+  .p-accordion-header-link:focus {
+  box-shadow: none;
+}
+.p-accordion
+  .p-accordion-header:not(.p-disabled).p-highlight:hover
+  .p-accordion-header-link {
+  background: #fff;
+  border-color: transparent;
+}
+.p-accordion .p-accordion-content {
+  border: 0;
+  padding: 0 1.25rem;
+}
+
+.icon {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+}
+.removeAccordationIcon{
+  .p-accordion-toggle-icon{
+    display: none;
+  }
+}
+.mat-drawer-container{
+  background: $lightGreenColor;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-is-mobile .example-toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+h1.example-app-name {
+  margin-left: 8px;
+}
+
+.example-sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+}
+
+.example-is-mobile .example-sidenav-container {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+     `<body>` to be our scrolling element for mobile layouts. */
+  flex: 1 0 auto;
+}
+
+.logo{
+  .expanded{
+    width: 180px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .collapsed{
+    width: 56px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+}
+
+.mat-drawer.mat-drawer-side{
+  z-index: 1 !important;
+}

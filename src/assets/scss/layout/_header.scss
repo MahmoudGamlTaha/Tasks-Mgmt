@@ -1,0 +1,106 @@
+.title {
+  padding-left: 60px;
+}
+
+.p-overlaypanel {
+  left: 20px !important;
+  // Extra small devices (portrait phones, less than 576px)
+  @media (max-width: 575px) {
+    width:290px !important;
+  }
+  &-content{
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+  &::before,
+  &::after {
+    left: 183px  !important;
+  }
+}
+
+.notifications {
+  max-height: 400px;
+  overflow-y: auto;
+
+  .notification-message {
+    font-size: 14px;
+    span {
+      display: inline-block;
+      height: 10px;
+      width: 10px;
+      border-radius: 50%;
+      background: #969696;
+    }
+    a{
+      color: $greenColor ;
+    }
+  }
+  .new{
+    background: $lightGreenColor;
+    .notification-circle.active {
+      background: #dfad37;
+    }
+  }
+
+  .time {
+    font-size: 14px;
+  }
+
+  .date {
+    padding-right: 100px;
+  }
+}
+
+.p-avatar {
+  background: transparent;
+  color: #fff;
+}
+
+.p-overlay-badge {
+  .p-badge {
+    top: 13px;
+    right: 13px;
+    min-width: 1.3rem;
+    height: 1.3rem;
+    line-height: 1.4rem;
+  }
+}
+
+.user {
+
+  img {
+    width: 40px;
+  }
+
+  span {
+    margin-top: -10px;
+  }
+}
+
+.header {
+
+  // Extra small devices (portrait phones, less than 576px)
+  @media (max-width: 575px) {
+    text-align: center !important;
+  }
+}
+
+.header-path {
+  font-size: 12px;
+}
+
+.float-left {
+
+  float: left !important;
+}
+.notification-user{
+   // Medium devices (tablets, 768px and up)
+   @media (min-width: 768px) {
+    float: left;
+
+  }
+  // Extra small devices (portrait phones, less than 576px)
+  @media (max-width: 575px) {
+    text-align: center !important;
+  }
+}

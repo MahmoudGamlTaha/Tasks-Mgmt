@@ -1,0 +1,77 @@
+<!-- Header -->
+<div class="bg-white shadow-sm py-3 px-4 bg-green-color header">
+  <div class="row">
+    <div class="col-xl-9 col-md-6 order-md-1 order-2">
+      <h2 class="text-white d-inline-block pl-3 mb-2">
+        <i class="fas fa-th pl-5" (click)="toggleNav()"></i> إداره المهام
+        والماليات
+      </h2>
+      <p class="mb-0 header-path">
+        <span class="text-white d-inline-block title">برمجيه اداره المهام</span>
+        <span class="text-white"
+          ><i class="fas fa-chevron-circle-left px-1"></i>{{ routerUrl }}</span
+        >
+      </p>
+    </div>
+    <div class="col-xl-3 col-md-6 pt-3 order-md-2 order-1">
+      <div class="notification-user">
+        <!-- Notification -->
+        <p-avatar
+          (click)="op.toggle($event)"
+          icon="fas fa-bell"
+          pBadge
+          value="4"
+          severity="warning"
+          styleClass="p-mr-2"
+          size="large"
+        ></p-avatar>
+
+        <p-overlayPanel
+          #op
+          [showCloseIcon]="false"
+          [style]="{ width: '450px' }"
+        >
+          <ng-template pTemplate>
+            <h4 class="px-3 font-weight-bold">إشعاراتك</h4>
+            <app-notification></app-notification>
+          </ng-template>
+        </p-overlayPanel>
+        <!-- ./Notification -->
+        <!-- User -->
+        <div class="user d-inline-block">
+          <div class="btn-group" dropdown>
+            <button
+              id="button-basic"
+              dropdownToggle
+              type="button"
+              class="bg-transparent text-grey-color border-0 dropdown-toggle"
+              aria-controls="dropdown-basic"
+            >
+              <p class="text-white d-inline-block mb-3">
+                <img
+                  src="../../assets/imgs/user.png"
+                  alt=""
+                  class="img-fluid"
+                />
+                احمد رمزي
+              </p>
+            </button>
+            <ul
+              id="dropdown-basic"
+              *dropdownMenu
+              class="dropdown-menu"
+              role="menu"
+              aria-labelledby="button-basic"
+            >
+              <li role="menuitem">
+                <a class="dropdown-item" href="#">تسجيل خروج</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- ./User -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ./Header -->

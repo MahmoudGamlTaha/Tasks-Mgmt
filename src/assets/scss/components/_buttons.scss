@@ -1,0 +1,38 @@
+.custombtn {
+  background: #fff;
+  color: #000;
+  border-color: #000;
+
+  .p-button-icon-only {
+    width: 2.5rem;
+    height: 2.5rem;
+
+    .p-button-rounded {
+      height: 2.5rem;
+      border-radius: 0 !important;
+    }
+  }
+
+  &:focus {
+    box-shadow: none;
+  }
+
+  &:hover {
+    background: #fff !important;
+    color: #000 !important;
+    border-color: #000 !important;
+  }
+}
+
+.greenBtn {
+  font-size: 14px;
+  padding: 2px 20px;
+  border: 0;
+  color: #fff;
+  background: #1eb05d;
+  transition: background .4s ease-in-out;
+
+  &:hover {
+    background: $greenColor;
+  }
+}

@@ -1,0 +1,38 @@
+<p-card>
+  <div class="workspace p-3">
+    <div
+      class="workspace-header px-3"
+
+    >
+      <h3>
+        <span class="icon" [style.backgroundColor]="'#' + ('random1' | randomcolor)"></span>
+        <span class="px-2 font-weight-bold">مشروع انتاج الطحينه</span>
+        <div class="btn-group float-left" dropdown>
+          <button id="button-basic" dropdownToggle type="button" class="bg-transparent text-grey-color border-0"
+                  aria-controls="dropdown-basic">
+                  <i class="fas fa-ellipsis-h"></i>
+          </button>
+          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+              role="menu" aria-labelledby="button-basic">
+            <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+            </li>
+          </ul>
+        </div>
+      </h3>
+    </div>
+    <div class="workspace-info px-3">
+      <p class="missions text-secondary">7 مهام</p>
+      <p class="hours text-secondary font-weight-bold"><span class="text-grey-color">15</span><span>/18 ساعة</span></p>
+      <p-progressBar [value]="10" [showValue]='false'></p-progressBar>
+      <p class="float-left mission-percentage"><span>89%</span></p>
+      <p class="mission-done">
+        <span class="d-block mb-2">معدل الانجاز</span>
+        <span class="font-weight-bold">15/18 <i class="far fa-check-circle text-grey-color"></i></span>
+      </p>
+    </div>
+  </div>
+</p-card>

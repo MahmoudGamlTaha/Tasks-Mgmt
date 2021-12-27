@@ -1,0 +1,68 @@
+<!-- Layout -->
+<mat-sidenav-container autosize class="example-sidenav-container">
+  <mat-sidenav #sideNav mode="side" opened="true" position="end" [mode]="mobileQuery.matches ? 'over' : 'side'"
+  [fixedInViewport]="mobileQuery.matches" [ngClass]="{'expandedSideNav':!isExpanded,'collapsedSideNav':isExpanded}">
+  <div class="logo pt-4 pb-5">
+    <ng-container *ngIf="isExpanded;else logo">
+     <img src="../../assets/imgs/logo.png" alt="" class="expanded">
+    </ng-container>
+    <ng-template #logo>
+      <img src="../../assets/imgs/collapsed logo.png" alt="" class="collapsed">
+    </ng-template>
+  </div>
+    <ul class="mb-0">
+      <li
+        class=" px-md-1"
+        *ngFor="let route of routes"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+      >
+        <a
+          [routerLink]="route.path"
+          href=""
+          class="py-2 d-inline-block text-dark"
+        >
+          <i [class]="route.icon"></i>
+          <span *ngIf="isExpanded" class="px-2">{{ route.text }}</span>
+        </a>
+      </li>
+    </ul>
+    <p-divider></p-divider>
+    <p-accordion>
+      <p-accordionTab [selected]="true" [ngClass]="{'removeAccordationIcon':!isExpanded}">
+        <ng-template pTemplate="header"
+          ><i class="fas fa-th-large"></i
+          ><span *ngIf="isExpanded" class="px-3" routerLink="../workspaces">مساحات العمل</span>
+        </ng-template>
+        <ng-template pTemplate="content">
+          <ul>
+            <li>
+              <a href="" class="text-dark">
+                <span class="icon" [style.backgroundColor]="'#' + ('random1' | randomcolor)"></span>
+                <span *ngIf="isExpanded" class="px-3">مشروع انتاج الطحينه</span>
+              </a>
+            </li>
+            <li class="pt-3">
+              <a href="" class="text-dark">
+                <span class="icon" [style.backgroundColor]="'#' + ('random2' | randomcolor)"></span>
+                <span *ngIf="isExpanded" class="px-3">كراسات الشروط والنماذج</span>
+              </a>
+            </li>
+            <li class="pt-3">
+              <a href="" class="text-dark">
+                <span class="icon" [style.backgroundColor]="'#' + ('random3' | randomcolor)"></span>
+                <span *ngIf="isExpanded" class="px-3">برمجية المحاسبة</span>
+              </a>
+            </li>
+          </ul>
+        </ng-template>
+      </p-accordionTab>
+    </p-accordion>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header ></app-header>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<!-- ./Layout -->
+

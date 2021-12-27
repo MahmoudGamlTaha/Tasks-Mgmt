@@ -1,0 +1,20 @@
+
+.p-fieldset {
+  margin-top: 16px;
+  &-content{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  legend {
+    width: auto !important;
+    float: unset !important;
+    font-size: 17px;
+    padding:8px 20px !important;
+    position: relative;
+    top: -18px;
+    border-radius: 0 !important;
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+    background: #DBDBDB !important;
+  }
+}

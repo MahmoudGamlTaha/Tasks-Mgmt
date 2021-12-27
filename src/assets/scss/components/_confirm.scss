@@ -1,0 +1,31 @@
+
+.new-financial-settlement-section{
+  .p-dialog{
+    &-header{
+      justify-content: center !important;
+      color: #fff !important;
+      background: $greenColor !important;
+    }
+    &-content{
+      text-align: center !important;
+      padding: 25px 15px !important;
+    }
+    .p-confirm-dialog-message{
+      margin-left: 0 !important;
+    }
+    &-footer{
+      text-align: center !important;
+    }
+  }
+}
+
+h2{
+  p{
+    font-size: 14px;
+  }
+}
+.p-dialog{
+  &-content{
+    padding: 0 1.5rem 0rem 1.5rem !important;
+  }
+}

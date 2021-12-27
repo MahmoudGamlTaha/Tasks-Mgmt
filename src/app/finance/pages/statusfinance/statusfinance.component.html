@@ -1,0 +1,84 @@
+<p-toast></p-toast>
+
+<div class="border p-3 new-financial-settlement mb-3">
+  <app-table
+    type="statusSettlement"
+    [tableData]="data"
+    [tableColumns]="columns"
+    [tableLabels]="labels"
+    (onShowDialog)="toggleDialog($event)"
+    (onToggleMissions)="toggleMissions($event)"
+  ></app-table>
+</div>
+<p-dialog
+  [(visible)]="display"
+  [modal]="true"
+  [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
+  [style]="{ width: '40vw' }"
+  [baseZIndex]="10000"
+  [draggable]="false"
+  [resizable]="false"
+  (onHide)="resetToggle()"
+>
+  <ng-template pTemplate="header">
+    <h2 class="text-green-color font-weight-bold mb-0">
+      تقديم طلب شكوي
+      <p class="text-warning">أخبرنا اكثر عن مشكلتك</p>
+    </h2>
+  </ng-template>
+  <div class="mb-3">
+    <textarea
+      class="form-control"
+      id="complaint"
+      rows="5"
+      placeholder="برجاء توضيح مشكلتك هنا"
+    ></textarea>
+  </div>
+  <div class="text-start">
+    <p-fileUpload
+      #fubauto
+      mode="advanced"
+      name="demo[]"
+      accept="image/*"
+      [maxFileSize]="100000"
+      [multiple]="true"
+      (onSelect)="onBasicUploadAuto($event)"
+      [auto]="true"
+      [chooseLabel]="'رفع الميديا'"
+      [chooseIcon]="'pi pi-cloud-upload'"
+
+    >
+
+    </p-fileUpload>
+  </div>
+  <ng-template pTemplate="footer">
+    <button class="p-ripple p-element p-button p-component p-fileupload-choose">إرسال</button>
+  </ng-template>
+</p-dialog>
+
+<p-dialog
+  [(visible)]="missionsVisable"
+  [modal]="true"
+  [breakpoints]="{'960px': '75vw', '640px': '100vw'}"
+  [style]="{ width: '80vw' }"
+  [baseZIndex]="10000"
+  [draggable]="false"
+  [resizable]="false"
+  (onHide)="resetToggleMissions()"
+>
+  <ng-template pTemplate="header">
+    <h2 class="text-green-color font-weight-bold mb-0">
+      مهام التسوية
+      <p class="text-warning">المهام المتاحة</p>
+    </h2>
+  </ng-template>
+  <div class="border p-3 new-financial-settlement mb-3">
+    <app-table
+  type='newSettlement'
+    [tableData]="missions"
+    [tableColumns]="columnsMissions"
+    [tableLabels]="labelsMissions"
+  ></app-table>
+  </div>
+
+</p-dialog>

@@ -1,0 +1,27 @@
+.p-tabview {
+  &-panels {
+    background: transparent !important;
+  }
+
+  &-nav {
+    .p-tabview-ink-bar {
+      background: $greenColor !important;
+      height: 3px !important;
+    }
+
+    li {
+      .p-tabview-nav-link {
+        color: $greyColor !important;
+
+      }
+    }
+
+    li.p-highlight {
+      .p-tabview-nav-link {
+        color: $greenColor !important;
+        border-color: $greenColor !important;
+        border-bottom-width: 3px;
+      }
+    }
+  }
+}
