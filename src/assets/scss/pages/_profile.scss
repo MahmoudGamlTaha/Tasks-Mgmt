@@ -1,0 +1,22 @@
+.upload-img{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 5px dashed #ddd;
+  margin: 0 auto;
+  line-height: 200px;
+  text-align: center;
+  overflow: hidden;
+}
+.img-profile{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.education,.certification{
+  &:not(:last-of-type){
+    border-bottom: 1px solid #ddd;
+  }
+}

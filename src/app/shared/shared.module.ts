@@ -17,7 +17,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 import { TableComponent } from './components/table/table.component';
 import { ConfirmationService } from 'primeng/api';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     RandomcolorPipe,
     NotificationComponent,
     TableComponent,
-    SidenavComponent,
+    ModalComponent,
 
   ],
   imports: [
@@ -46,7 +46,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     })
   ],
   providers:[ConfirmationService],
-  exports: [RandomcolorPipe,TableComponent, NgxModule, PrimngModule, MaterialModule,TranslateModule],
+  exports: [RandomcolorPipe,ModalComponent,TableComponent, NgxModule, PrimngModule, MaterialModule,TranslateModule],
 })
 export class SharedModule {}
 

@@ -1,0 +1,61 @@
+<form>
+  <div class="mb-3">
+    <label for="position" class="form-label">المنصب<span class="text-danger">*</span></label>
+    <input type="text" class="form-control" id="position" aria-describedby="positionHelp" placeholder="شهاده برمجه المواقع">
+    <!-- <div id="sideHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="mb-3">
+        <label for="jobKind" class="form-label"> نوع الوظيفه</label>
+        <select class="form-select" aria-label="jobKind">
+          <option selected>برجاء الاختيار</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+        <!-- <div id="jobKindHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-5">
+      <div class="mb-3">
+        <label for="startDate" class="form-label">تاريخ الحصول</label>
+        <input type="date" class="form-control" id="startDate" aria-describedby="startDateHelp">
+        <!-- <div id="startDateHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+      </div>
+    </div>
+    <div class="col-lg-5">
+      <div class="mb-3">
+        <label for="endDate" class="form-label">تاريخ الانتهاء</label>
+        <input type="date" class="form-control" id="endDate" aria-describedby="endDateHelp">
+        <!-- <div id="endDateHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <div class="mb-3 form-check mt-3">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">اعمل هناك</label>
+      </div>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="location" class="form-label">مكان العمل</label>
+    <input type="text" class="form-control" id="location" aria-describedby="locationHelp" placeholder="لندن , بريطانيا">
+    <!-- <div id="locationHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+  </div>
+  <div class="mb-3">
+    <label for="industry" class="form-label">الصناعة</label>
+    <input type="text" class="form-control" id="industry" aria-describedby="industryHelp" placeholder="it">
+    <!-- <div id="industryHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">وصف الوظيفه</label>
+    <textarea class="form-control" id="description" rows="5" placeholder="يمكنك إضافة توصيف الوظيفه هنا .. "></textarea>
+  </div>
+
+  <button type="submit" class="border-success rounded text-green-color bg-white px-5 py-2">حفظ</button>
+</form>
+

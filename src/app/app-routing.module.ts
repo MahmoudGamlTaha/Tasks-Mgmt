@@ -12,8 +12,11 @@ const routes: Routes = [
   {path:'finance',component:LayoutComponent,children:[
     {path:'',loadChildren:()=>import('./finance/finance.module').then(module=>module.FinanceModule)}
   ]},
+  {path:'profile',component:LayoutComponent,children:[
+    {path:'',loadChildren:()=>import('./profile/profile.module').then(module=>module.ProfileModule)}
+  ]},
   {path:'',redirectTo:'dashboard',pathMatch:'full'},
-  {path:'**',redirectTo:'',pathMatch:'full'}
+  {path:'**',redirectTo:'dashboard',pathMatch:'full'}
 ];
 
 @NgModule({

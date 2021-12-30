@@ -4,9 +4,8 @@ import { WorkspaceinfoComponent } from './components/workspaceinfo/workspaceinfo
 import { WorkspacesComponent } from './pages/workspaces/workspaces.component';
 
 const routes: Routes = [
-  {path:'',component:WorkspacesComponent,children:[
-    {path:':id',component:WorkspaceinfoComponent}
-  ]},
+  {path:'',component:WorkspacesComponent},
+  {path:':id',component:WorkspaceinfoComponent}
 ];
 
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { SideNavService } from 'src/app/shared/services/side-nav.service';
 
 @Component({
   selector: 'app-workspaceinfo',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./workspaceinfo.component.scss']
 })
 export class WorkspaceinfoComponent implements OnInit {
-
-  constructor() { }
+  missionTitle!:string;
+  constructor(private activeRoute:ActivatedRoute,private sideNavService:SideNavService) { }
 
   ngOnInit(): void {
+    this.activeRoute.params.subscribe((params:any)=>{
+      this.sideNavService.changeParam(params['id'])
+      // console.log(params['id'])
+      this.missionTitle = params['id']
+    })
   }
 
 }

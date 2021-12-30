@@ -1,0 +1,251 @@
+<section class="goals">
+  <div class="mb-4">
+    <p-panel>
+      <ng-template pTemplate="header">
+        <h2 class="text-green-color mb-0 w-100">
+          <span class="font-weight-bold">نبذه شخصية</span>
+          <div class="float-start">
+            <button
+              class="bg-transparent border-0 text-grey-color"
+              (click)="ontoggleModal('brief')"
+            >
+              <i class="pi pi-pencil"></i>
+            </button>
+          </div>
+        </h2>
+      </ng-template>
+      <ng-container *ngIf="false; else briefContent">
+        <p class="text-grey-color">لم يتم الإضافه بعد ..</p>
+      </ng-container>
+      <ng-template #briefContent>
+        <p>
+          إنني محاسب طموح امتلك عشر سنوات من الخبرة، ولدي حماس تجاه تحقيق مستقبل
+          وظيفي أفضل، وهذا ما دفعني إلى تقديم طلب الانضمام إلى فريق العمل في
+          شركة مرموقة مثل خاصتكم، كي أضيف إليها واستغل ما اكتسبته من خبرة ومهارة
+          في مجال العمل وتتيح هي لي فرصة الاحتكاك بالعمل ضمن فريق عمل محترف.
+        </p>
+      </ng-template>
+    </p-panel>
+  </div>
+  <div class="mb-4">
+    <p-panel>
+      <ng-template pTemplate="header">
+        <h2 class="text-green-color mb-0 w-100">
+          <span class="font-weight-bold">التعليم</span>
+          <div class="float-start">
+            <button
+              class="bg-transparent border-0 text-grey-color"
+              (click)="ontoggleModal('education')"
+            >
+              <i class="pi pi-plus"></i>
+            </button>
+          </div>
+        </h2>
+      </ng-template>
+      <ng-container *ngIf="false; else educationContent">
+        <p class="text-grey-color">لم يتم الإضافه بعد ..</p>
+      </ng-container>
+      <ng-template #educationContent>
+        <div class="education py-3">
+          <div class="education-title">
+            <h3>
+              <span class="font-weight-bold">جامعة النيل</span>
+              <div class="float-start">
+                <button
+                  class="bg-transparent border-0 text-grey-color"
+                  (click)="ontoggleModal('education')"
+                >
+                  <i class="pi pi-pencil"></i>
+                </button>
+              </div>
+            </h3>
+          </div>
+          <div class="eductation-description">
+            <p>بكالريوس الهندسة الصناعية والإدارة.</p>
+          </div>
+          <div class="education-gpa">
+            <p>تقدير عام 3.5</p>
+          </div>
+          <div class="education-year">
+            <p class="text-grey-color"> 2019 - 2023</p>
+          </div>
+        </div>
+        <div class="education py-3">
+          <div class="education-title">
+            <h3>
+              <span class="font-weight-bold">جامعة النيل</span>
+              <div class="float-start">
+                <button
+                  class="bg-transparent border-0 text-grey-color"
+                  (click)="ontoggleModal('education')"
+                >
+                  <i class="pi pi-pencil"></i>
+                </button>
+              </div>
+            </h3>
+          </div>
+          <div class="eductation-description">
+            <p>بكالريوس الهندسة الصناعية والإدارة.</p>
+          </div>
+          <div class="education-gpa">
+            <p>تقدير عام 3.5</p>
+          </div>
+          <div class="education-year">
+            <p class="text-grey-color"> 2019 - 2023</p>
+          </div>
+        </div>
+      </ng-template>
+    </p-panel>
+  </div>
+
+  <div class="mb-4">
+    <p-panel>
+      <ng-template pTemplate="header">
+        <h2 class="text-green-color mb-0 w-100">
+          <span class="font-weight-bold">الشهادات / الانجازات</span>
+          <div class="float-start">
+            <button
+              class="bg-transparent border-0 text-grey-color"
+              (click)="ontoggleModal('certification')"
+            >
+              <i class="pi pi-plus"></i>
+            </button>
+          </div>
+        </h2>
+      </ng-template>
+      <ng-container *ngIf="false; else certificationContent">
+        <p class="text-grey-color">لم يتم الإضافه بعد ..</p>
+      </ng-container>
+      <ng-template #certificationContent>
+        <div class="certification py-3">
+          <div class="certification-title">
+            <h3>
+              <span class="font-weight-bold">تصميم الواجهات بتصميم معتمد علي المستخدم</span>
+              <div class="float-start">
+                <button
+                  class="bg-transparent border-0 text-grey-color"
+                  (click)="ontoggleModal('certification')"
+                >
+                  <i class="pi pi-pencil"></i>
+                </button>
+              </div>
+            </h3>
+          </div>
+          <div class="certification-side">
+            <p>جوجل - كورسيرا</p>
+          </div>
+          <div class="certification-link">
+            <p class="text-grey-color"> رقم الشهادة المرجعي WSHZJA7463D5</p>
+          </div>
+          <div class="certification-year">
+            <p>Jul 2021 </p>
+          </div>
+          <div class="certification-link">
+            <a href="" class="text-dark font-weight-bold">الوصول للشهادة</a>
+          </div>
+        </div>
+        <div class="certification py-3">
+          <div class="certification-title">
+            <h3>
+              <span class="font-weight-bold">تصميم الواجهات بتصميم معتمد علي المستخدم</span>
+              <div class="float-start">
+                <button
+                  class="bg-transparent border-0 text-grey-color"
+                  (click)="ontoggleModal('certification')"
+                >
+                  <i class="pi pi-pencil"></i>
+                </button>
+              </div>
+            </h3>
+          </div>
+          <div class="certification-side">
+            <p>جوجل - كورسيرا</p>
+          </div>
+          <div class="certification-link">
+            <p class="text-grey-color"> رقم الشهادة المرجعي WSHZJA7463D5</p>
+          </div>
+          <div class="certification-year">
+            <p>Jul 2021 </p>
+          </div>
+          <div class="certification-link">
+            <a href="" class="text-dark font-weight-bold">الوصول للشهادة</a>
+          </div>
+        </div>
+      </ng-template>
+    </p-panel>
+  </div>
+
+  <div class="mb-4">
+    <p-panel>
+      <ng-template pTemplate="header">
+        <h2 class="text-green-color mb-0 w-100">
+          <span class="font-weight-bold">الخبرات</span>
+          <div class="float-start">
+            <button
+              class="bg-transparent border-0 text-grey-color"
+              (click)="ontoggleModal('experience')"
+            >
+              <i class="pi pi-plus"></i>
+            </button>
+          </div>
+        </h2>
+      </ng-template>
+      <ng-container *ngIf="false; else experienceContent">
+        <p class="text-grey-color">لم يتم الإضافه بعد ..</p>
+      </ng-container>
+      <ng-template #experienceContent>
+        <div class="experience py-3">
+          <div class="experience-title">
+            <h3>
+              <span class="font-weight-bold">دكتور جامعي</span>
+              <div class="float-start">
+                <button
+                  class="bg-transparent border-0 text-grey-color"
+                  (click)="ontoggleModal('experience')"
+                >
+                  <i class="pi pi-pencil"></i>
+                </button>
+              </div>
+            </h3>
+          </div>
+          <div class="experience-position">
+            <p>جوجل - كورسيرا</p>
+          </div>
+          <div class="experience-year">
+            <p class="text-grey-color">Sep 2020 - حتي الآن</p>
+          </div>
+          <div class="experience-location">
+            <p> الشيخ زايد. الجيزة</p>
+          </div>
+          <div class="experience-description" >
+            <p>المهام والمسئوليات 1. التفرغ للقيام بالمحاضرات والأشراف على التمرينات العملية بالقسم. 2. المساهمة في تقدم العلوم التخصصية بإجراء البحوث والدراسات المبتكرة. 3. الأشراف على ما يعده الطلاب من البحوث والأشراف على المعامل والمكتبات وتزويدها بالكتب والمراجع. 4. التمسك بالتقاليد والقيم الجامعية الأصيلة والعمل على بثها في نفوس الطلاب . 5. ترسيخ وتدعيم الاتصال المباشر بالطلاب ورعاية شئونهم الاجتماعية والثقافية والرياضية. 6. حفظ النظام داخل قاعات الدروس والمحاضرات والمعامل ويقدمون إلى رئيس القسم تقريرا عن كل حادث من شأنه الإخلال بالنظام وما اتخذ من اجراءت لحفظه . 7. تقديم تقريرا عن نشاطه العلمي والبحوث التي أجراها ونشرها والبحوث الجارية إلى رئيس مجلس القسم المختص للعرض على مجلس القسم . 8. المشاركة في أعمال المجالس واللجان التي يكونون أعضاء فيها . 9- المشاركة في أعمال المؤتمرات العلمية للقسم وللكلية والعمل على المشاركة فى المؤتمرات العلمية الداخلية والخارجية وأعداد المشاريع البحثية الاتصالات الخارجية: تنمية علاقات طيبة مع الزملاء فى الكليات الاخرى والأدارات المختلفة بالجامعة الداخلية: الإشراف على طلاب الدراسات العليا وتوجيههم وتحفيزهم وتنميتهم، التعاون مع الزملاء وتوقير أساتذته ورعاية طلاب البكالوريوس والمساهمة فى حل مشاكلهم</p>
+          </div>
+        </div>
+      </ng-template>
+    </p-panel>
+  </div>
+</section>
+
+<app-modal
+  [display]="toggleModal"
+  [headerTitle]="title"
+  [headerDescription]="titleDescription"
+  (onCloseModal)="closeModal($event)"
+>
+  <ng-container *ngIf="selectSection == 'brief'; else education">
+    <app-addbreif></app-addbreif>
+  </ng-container>
+  <ng-template #education>
+    <ng-container *ngIf="selectSection == 'education'; else certification">
+      <app-addeducation></app-addeducation>
+    </ng-container>
+  </ng-template>
+  <ng-template #certification>
+    <ng-container *ngIf="selectSection == 'certification'; else experience">
+      <app-certification></app-certification>
+    </ng-container>
+  </ng-template>
+  <ng-template #experience>
+    <app-experience></app-experience>
+  </ng-template>
+</app-modal>
