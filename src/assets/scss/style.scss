@@ -8,6 +8,7 @@
 @import "helpers/variable";
 @import "helpers/colors";
 @import "helpers/heading";
+@import "helpers/width";
 @import "components/buttons";
 @import "components/alert";
 @import "components/card";
@@ -20,9 +21,11 @@
 @import "components/fileupload";
 @import "layout/header";
 @import "layout/sidenav";
+@import "layout/footer";
 @import "pages/dashboard";
 @import "pages/financial-settlement";
 @import "pages/profile";
+@import "pages/workspace";
 *{
   font-family: $fontFamily ;
   font-weight: 500;

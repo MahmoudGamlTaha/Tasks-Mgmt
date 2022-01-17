@@ -1,0 +1,569 @@
+
+<app-modal
+  [display]="toggleModal"
+  [dialogPosition]="position"
+  (onCloseModal)="closeModal($event)"
+  [width]="'45vw'"
+  [closable]="(modalSection =='addMission')"
+  [headerTitle]="'إضافة مهمة'"
+>
+  <app-missioninfo [title]="missionTitle" (onCloseModal)="closeModal($event)" *ngIf="modalSection =='missionDetails'"></app-missioninfo>
+  <app-addmission *ngIf="modalSection =='addMission'"></app-addmission>
+</app-modal>
+
+<div class="missions-list-section">
+  <!-- Select Workspace -->
+  <div class="bg-white py-2 px-3 missions-list border-bottom">
+    <div class="workspace-menu d-inline-block">
+      <p-dropdown
+        [options]="workspaceData"
+        (onChange)="changeRoute()"
+        [(ngModel)]="selectedMission"
+        optionLabel="name"
+      >
+        <ng-template pTemplate="selectedItem">
+          <div class="mission-item mission-item-value" *ngIf="selectedMission">
+            <span
+              class="icon"
+              [style.backgroundColor]="
+                '#' + (selectedMission.name | randomcolor)
+              "
+            ></span>
+            {{ selectedMission.name }}
+          </div>
+        </ng-template>
+        <ng-template let-mission pTemplate="item">
+          <div class="mission-item">
+            <span
+              class="icon"
+              [style.backgroundColor]="'#' + (mission.name | randomcolor)"
+            ></span>
+            {{ mission.name }}
+          </div>
+        </ng-template>
+      </p-dropdown>
+    </div>
+  </div>
+  <!-- ./Select Workspace -->
+
+  <!-- Filter -->
+  <div class="bg-white py-2 px-3 filter-missions">
+    <span class="p-input-icon-right">
+      <i class="pi pi-search"></i>
+      <input
+        type="text"
+        pInputText
+        placeholder="بحث المهام .."
+        (input)="dt.filterGlobal($any($event).target.value, 'contains')"
+      />
+    </span>
+    <div class="float-left">
+      <div class="filter">
+        <label for=""
+          ><i class="pi pi-filter"></i> <span class="ps-2">فلتر</span></label
+        >
+        <p-dropdown
+          [options]="filter"
+          (onChange)="changeRoute()"
+          [(ngModel)]="selectedFilter"
+          optionLabel="name"
+        >
+          <ng-template pTemplate="selectedItem">
+            <div class="mission-item mission-item-value" *ngIf="selectedFilter">
+              <span class="alert font-weight-bold alert-success text-success"
+                ><i [class]="selectedFilter.icon"></i
+                >{{ selectedFilter.name }}</span
+              >
+            </div>
+          </ng-template>
+          <ng-template let-filter pTemplate="item">
+            <div class="mission-item">
+              <span class="alert font-weight-bold alert-success text-success"
+                ><i [class]="filter.icon"></i> {{ filter.name }}</span
+              >
+            </div>
+          </ng-template>
+        </p-dropdown>
+        <div class="btn-group pe-5" dropdown>
+          <button
+            id="button-basic"
+            dropdownToggle
+            type="button"
+            class="bg-transparent text-grey-color border-0"
+            aria-controls="dropdown-basic"
+          >
+            <i class="fas fa-ellipsis-h"></i>
+          </button>
+          <ul
+            id="dropdown-basic"
+            *dropdownMenu
+            class="dropdown-menu"
+            role="menu"
+            aria-labelledby="button-basic"
+          >
+            <li role="menuitem">
+              <a class="dropdown-item" href="#">Action</a>
+            </li>
+            <li role="menuitem">
+              <a class="dropdown-item" href="#">Another action</a>
+            </li>
+            <li role="menuitem">
+              <a class="dropdown-item" href="#">Something else here</a>
+            </li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem">
+              <a class="dropdown-item" href="#">Separated link</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Filter -->
+  <!-- Mission Approved -->
+  <div class="p-3 mb-4">
+    <div class="border p-3 new-financial-settlement mb-3">
+      <p-table
+        #dt
+        [value]="missionsData"
+        [paginator]="missionsData.length < 10 ? false : true"
+        [rows]="10"
+        [reorderableColumns]="true"
+        [showCurrentPageReport]="true"
+        responsiveLayout="stack"
+        currentPageReportTemplate="عرض {first} الي {last} من {totalRecords} عنصر"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        styleClass="p-datatable-sm"
+        dataKey="mission_id"
+        [globalFilterFields]="['name']"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th class="text-end">
+              <span class="highlight-label ms-2">مهام مُعتمدة </span>
+              <span>{{ missionsData.length }} مهام</span>
+            </th>
+            <th class="text-end"><span>تاريخ الانتهاء</span></th>
+            <th class="text-end"><span>عدد الساعات</span></th>
+            <th class="text-end"><span>الحالة</span></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-mission let-index="rowIndex">
+          <tr [pReorderableRow]="index">
+            <td
+              class="text-end border-start position-relative w-50"
+              [ngClass]="{ 'border-bottom-0': mission.subMissions.length }"
+            >
+              <!-- ReOrder Icon -->
+              <span
+                class="pi pi-ellipsis-v reorder-icon"
+                [pReorderableRowHandle]="index"
+              ></span>
+              <!-- ./ReOrder Icon -->
+              <!-- Check Icon -->
+              <span>
+                <i
+                  class="fas check px-2"
+                  [ngClass]="{
+                    'fa-check-circle text-green-color': false,
+                    ' pi pi-check': true
+                  }"
+                ></i>
+              </span>
+              <!-- ./Check Icon -->
+              <!-- Expand Icon -->
+              <span [pRowToggler]="mission">
+                <button class="border-0 bg-transparent">
+                  <i
+                    class="fas fa-list-ul text-grey-color"
+                    *ngIf="mission.subMissions.length"
+                  ></i>
+                </button>
+              </span>
+              <!-- ./Expand Icon -->
+              <!-- Mission Name -->
+              <span (click)="getMissionDetails(mission.name,'missionDetails')">
+                {{ mission.name }}
+              </span>
+              <!-- ./Mission Name -->
+            </td>
+            <td
+              class="text-end border-start position-relative w-10"
+              [ngClass]="{ 'border-bottom-0': mission.subMissions.length }"
+            >
+              {{ mission.creationDate }}
+            </td>
+            <td
+              class="text-end border-start position-relative mission-time-data w-30"
+              [ngClass]="{ 'border-bottom-0': mission.subMissions.length }"
+            >
+              <div>
+                <span
+                  class="text-grey-color total-time"
+                  *ngIf="mission.subMissions.length"
+                  >الاجمالي :
+                </span>
+                <div
+                  class="d-inline-block text-center text-grey-color"
+                  [ngStyle]="{
+                    'padding-right': mission.subMissions.length ? '' : '58px'
+                  }"
+                >
+                  <label for="integeronly" class="d-block">Min</label>
+                  <p-inputNumber
+                    [(ngModel)]="mission.minutes"
+                    [readonly]="true"
+                    [max]="60"
+                  ></p-inputNumber>
+                </div>
+                <span class="colon px-1">:</span>
+                <div class="d-inline-block text-center text-grey-color">
+                  <label for="integeronly" class="d-block">Hr</label>
+                  <p-inputNumber
+                    [(ngModel)]="mission.hours"
+                    [readonly]="true"
+                    [max]="24"
+                  ></p-inputNumber>
+                </div>
+
+                <button
+                  class="border-0 bg-transparent play"
+                  (click)="play()"
+                  *ngIf="!mission.subMissions.length"
+                >
+                  <i class="far fa-play-circle"></i>
+                </button>
+                <button
+                  class="border-0 bg-transparent text-grey-color replay"
+                  (click)="repeat()"
+                  *ngIf="!mission.subMissions.length"
+                >
+                  <i class="fas fa-redo-alt"></i>
+                </button>
+              </div>
+            </td>
+            <td
+              class="text-end border-start position-relative w-10"
+              [ngClass]="{ 'border-bottom-0': mission.subMissions.length }"
+            >
+              <span
+                class="alert font-weight-bold"
+                [ngClass]="{
+                  'alert-secondary text-dark': mission.status == 3,
+                  'alert-warning text-warning': mission.status == 2,
+                  'alert-success text-success': mission.status == 1
+                }"
+              >
+                {{
+                  mission.status == 1
+                    ? "طبيعي"
+                    : mission.status == 2
+                    ? "جاري المراجعة"
+                    : mission.status == 3
+                    ? "تمت التسوية"
+                    : ""
+                }}
+              </span>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="rowexpansion" let-mission let-index="rowIndex">
+          <tr class="row-expansion">
+            <td colspan="4" class="p-0">
+              <p-table
+                [value]="mission.subMissions"
+                dataKey="id"
+                styleClass="p-datatable-sm"
+              >
+                <ng-template pTemplate="body" let-order>
+                  <tr [pReorderableRow]="index">
+                    <td
+                      class="text-end border-start position-relative w-50 pe-5"
+                    >
+                      <span
+                        [ngClass]="{
+                          'text-green-color font-weight-bold': false
+                        }"
+                        [pRowToggler]="mission"
+                      >
+                        <i
+                          class="fas check px-2"
+                          [ngClass]="{
+                            'fa-check-circle text-green-color': false,
+                            ' pi pi-check': true
+                          }"
+                        ></i>
+                        {{ mission.name }}</span
+                      >
+                    </td>
+                    <td class="text-end border-start position-relative w-10">
+                      {{ mission.creationDate }}
+                    </td>
+                    <td
+                      class="text-end border-start position-relative mission-time-data w-30"
+                    >
+                      <span [ngStyle]="{ opacity: 0 }" class="total-time"
+                        >الاجمالي :
+                      </span>
+                      <div class="d-inline-block text-center text-grey-color">
+                        <label for="integeronly" class="d-block">Min</label>
+                        <p-inputNumber
+                          [(ngModel)]="mission.minutes"
+                          [readonly]="true"
+                          [max]="60"
+                        ></p-inputNumber>
+                        <!-- <ng-container *ngIf="getElapsedTime() as elapsed">
+
+                          <input type="text" [value]="elapsed.hour">
+                        </ng-container> -->
+                      </div>
+                      <span class="colon px-1">:</span>
+                      <div class="d-inline-block text-center text-grey-color">
+                        <label for="integeronly" class="d-block">Hr</label>
+                        <p-inputNumber
+                          [(ngModel)]="mission.hours"
+                          [readonly]="true"
+                          [max]="24"
+                        ></p-inputNumber>
+                      </div>
+
+                      <button class="border-0 bg-transparent play" (click)="play()">
+                        <i class="far fa-play-circle"></i>
+                      </button>
+                      <button
+                        class="border-0 bg-transparent text-grey-color replay"
+                        (click)="repeat()"
+                      >
+                        <i class="fas fa-redo-alt"></i>
+                      </button>
+                    </td>
+                    <td class="text-end border-start position-relative w-10">
+                      <span
+                        class="alert font-weight-bold"
+                        [ngClass]="{
+                          'alert-secondary text-dark': mission.status == 3,
+                          'alert-warning text-warning': mission.status == 2,
+                          'alert-success text-success': mission.status == 1
+                        }"
+                      >
+                        {{
+                          mission.status == 1
+                            ? "طبيعي"
+                            : mission.status == 2
+                            ? "جاري المراجعة"
+                            : mission.status == 3
+                            ? "تمت التسوية"
+                            : ""
+                        }}
+                      </span>
+                    </td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td class="text-center py-5 text-grey-color emptyTable" colspan="7">
+              لا يوجد بيانات.
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+  <!-- ./Mission Approved -->
+  <!-- New Mission  -->
+  <div class="p-3 mb-4">
+    <div class="border p-3 new-financial-settlement mb-3">
+      <p-table
+        [value]="missionsData"
+        [paginator]="missionsData.length < 10 ? false : true"
+        [rows]="10"
+        [reorderableColumns]="true"
+        [showCurrentPageReport]="true"
+        responsiveLayout="stack"
+        currentPageReportTemplate="عرض {first} الي {last} من {totalRecords} عنصر"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        styleClass="p-datatable-sm"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th class="text-end">
+              <span class="highlight-label ms-2">مهام جديدة </span>
+              <span>{{ missionsData.length }} مهام</span>
+            </th>
+            <th class="text-end"><span>الحالة</span></th>
+            <th class="text-end"><span>الحد الاقصي</span></th>
+            <th class="text-end"><span>مدة النتفيذ</span></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-mission let-index="rowIndex">
+          <tr [pReorderableRow]="index">
+            <td
+              class="text-end border-start position-relative w-50"
+              [ngClass]="{ 'border-bottom-0': mission.subMissions.length }"
+            >
+              <!-- ReOrder Icon -->
+              <span
+                class="pi pi-ellipsis-v reorder-icon"
+                [pReorderableRowHandle]="index"
+              ></span>
+              <!-- ./ReOrder Icon -->
+              <!-- Mission Name -->
+              <span>
+                {{ mission.name }}
+              </span>
+              <!-- ./Mission Name -->
+            </td>
+            <td
+              class="text-end border-start position-relative"
+              [ngClass]="{ 'border-bottom-0': mission.subMissions.length }"
+            >
+              <button
+                class="border-0 bg-transparent"
+                *ngIf="mission.status == 2"
+              >
+                <span class="alert alert-success"> قبول</span>
+              </button>
+              <button
+                class="border-0 bg-transparent"
+                *ngIf="mission.status == 2"
+              >
+                <span class="alert alert-danger"> رفض</span>
+              </button>
+              <span
+                class="alert font-weight-bold"
+                [ngClass]="{
+                  'alert-warning text-warning': mission.status == 1
+                }"
+              >
+                {{ mission.status == 1 ? "في إنتظار الإعتماد" : "" }}
+              </span>
+            </td>
+            <td
+              class="text-end border-start position-relative w-10"
+              [ngClass]="{ 'border-bottom-0': mission.subMissions.length }"
+            >
+              {{ mission.creationDate }}
+            </td>
+            <td
+              class="text-end border-start position-relative mission-time-data"
+            >
+              <div>
+                <div class="d-inline-block text-center text-grey-color">
+                  <label for="integeronly" class="d-block">Min</label>
+                  <p-inputNumber
+                    [(ngModel)]="mission.minutes"
+                    [max]="60"
+                  ></p-inputNumber>
+                </div>
+                <span class="colon px-1">:</span>
+                <div class="d-inline-block text-center text-grey-color">
+                  <label for="integeronly" class="d-block">Hr</label>
+                  <p-inputNumber
+                    [(ngModel)]="mission.hours"
+                    [max]="24"
+                  ></p-inputNumber>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <button class="py-1 px-2 bg-transparent border-0 text-grey-color rounded mt-3" (click)="openModal('addMission')">إضافة مهام ..</button>
+    </div>
+  </div>
+  <!-- ./New Mission  -->
+
+  <!-- Missions Ready to Settlement-->
+  <div class="p-3 mb-4">
+    <div class="border p-3 new-financial-settlement mb-3">
+      <p-table
+        [value]="missionsData"
+        [paginator]="missionsData.length < 10 ? false : true"
+        [rows]="10"
+        [reorderableColumns]="true"
+        [showCurrentPageReport]="true"
+        responsiveLayout="stack"
+        currentPageReportTemplate="عرض {first} الي {last} من {totalRecords} عنصر"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        styleClass="p-datatable-sm"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th class="text-end">
+              <span class="highlight-label ms-2">مهام جاهزه للتسوية </span>
+              <span>{{ missionsData.length }} مهام</span>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-mission let-index="rowIndex">
+          <tr [pReorderableRow]="index">
+            <td
+              class="text-end border-start position-relative w-50"
+              [ngClass]="{ 'border-bottom-0': mission.subMissions.length }"
+            >
+              <!-- ReOrder Icon -->
+              <span
+                class="pi pi-ellipsis-v reorder-icon"
+                [pReorderableRowHandle]="index"
+              ></span>
+              <!-- ./ReOrder Icon -->
+              <!-- Check Icon -->
+              <span>
+                <i
+                  class="fas check px-2"
+                  [ngClass]="{
+                    'fa-check-circle text-green-color': true,
+                    ' pi pi-check': false
+                  }"
+                ></i>
+              </span>
+              <!-- ./Check Icon -->
+              <!-- Mission Name -->
+              <span [ngClass]="{ 'text-green-color font-weight-bold': true }">
+                {{ mission.name }}
+              </span>
+              <!-- ./Mission Name -->
+            </td>
+
+            <td
+              class="text-end border-start position-relative w-10"
+              [ngClass]="{ 'border-bottom-0': mission.subMissions.length }"
+            >
+              {{ mission.creationDate }}
+            </td>
+            <td
+              class="text-end border-start position-relative mission-time-data"
+            >
+              <div>
+                <div class="d-inline-block text-center text-grey-color">
+                  <label for="integeronly" class="d-block">Min</label>
+                  <p-inputNumber
+                    [(ngModel)]="mission.minutes"
+                    [max]="60"
+                  ></p-inputNumber>
+                </div>
+                <span class="colon px-1">:</span>
+                <div class="d-inline-block text-center text-grey-color">
+                  <label for="integeronly" class="d-block">Hr</label>
+                  <p-inputNumber
+                    [(ngModel)]="mission.hours"
+                    [max]="24"
+                  ></p-inputNumber>
+                </div>
+              </div>
+            </td>
+            <td
+              class="text-end border-start position-relative"
+              [ngClass]="{ 'border-bottom-0': mission.subMissions.length }"
+            ></td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+  <!-- ./Missions Ready to Settlement-->
+</div>

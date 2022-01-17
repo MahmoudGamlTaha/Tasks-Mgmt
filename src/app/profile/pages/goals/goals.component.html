@@ -231,6 +231,7 @@
   [headerTitle]="title"
   [headerDescription]="titleDescription"
   (onCloseModal)="closeModal($event)"
+  [closable]="true"
 >
   <ng-container *ngIf="selectSection == 'brief'; else education">
     <app-addbreif></app-addbreif>

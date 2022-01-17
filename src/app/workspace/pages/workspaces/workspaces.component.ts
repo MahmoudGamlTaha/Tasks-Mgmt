@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MissionService } from 'src/app/shared/services/mission/mission.service';
 
 @Component({
   selector: 'app-workspaces',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./workspaces.component.scss']
 })
 export class WorkspacesComponent implements OnInit {
-
-  constructor() { }
+  workspaces:any[] = []
+  constructor(private missionService:MissionService) { }
 
   ngOnInit(): void {
+    this.workspaces = this.missionService.getWorkspaces()
   }
 
 }

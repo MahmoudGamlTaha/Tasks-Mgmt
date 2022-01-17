@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LayoutComponent } from './components/layout/layout.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -18,6 +18,8 @@ import { HttpClient } from '@angular/common/http';
 import { TableComponent } from './components/table/table.component';
 import { ConfirmationService } from 'primeng/api';
 import { ModalComponent } from './components/modal/modal.component';
+import { FormComponent } from './components/form/form.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -27,12 +29,15 @@ import { ModalComponent } from './components/modal/modal.component';
     NotificationComponent,
     TableComponent,
     ModalComponent,
+    FormComponent,
+    FooterComponent,
 
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule,
     NgxModule,
     PrimngModule,
     MaterialModule,
@@ -46,7 +51,7 @@ import { ModalComponent } from './components/modal/modal.component';
     })
   ],
   providers:[ConfirmationService],
-  exports: [RandomcolorPipe,ModalComponent,TableComponent, NgxModule, PrimngModule, MaterialModule,TranslateModule],
+  exports: [RandomcolorPipe,ModalComponent,TableComponent,FormsModule, NgxModule, PrimngModule, MaterialModule,TranslateModule,ReactiveFormsModule],
 })
 export class SharedModule {}
 

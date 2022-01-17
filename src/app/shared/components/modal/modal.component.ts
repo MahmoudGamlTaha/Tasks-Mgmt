@@ -9,10 +9,16 @@ export class ModalComponent implements OnInit {
   @Input() display!:boolean;
   @Input() headerTitle!:string;
   @Input() headerDescription!:string;
-  @Output() onCloseModal = new EventEmitter<boolean>()
+  @Input() dialogPosition:string= ''
+  @Output() onCloseModal = new EventEmitter<boolean>();
+  @Input() closable:boolean = true
+  @Input() width:string = '35vw';
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.headerTitle)
+    console.log(this.headerDescription)
   }
   hideModal(){
     this.onCloseModal.emit(false)

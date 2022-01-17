@@ -36,3 +36,10 @@
     background: $greenColor;
   }
 }
+
+.btn{
+  &:focus{
+
+    box-shadow: none;
+  }
+}

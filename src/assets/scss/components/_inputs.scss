@@ -1,10 +1,77 @@
 // For Record
-.p-inputtext {
-  height: 29px !important;
-  width: 50px !important;
-  border-radius: 0;
+.mission-time-data{
+  .p-inputtext {
+    height: 29px !important;
+    width: 50px !important;
+    border-radius: 0;
+    border:1px solid #ced4da;
+  }
 }
+.p-inputtext{
+  border: 0;
+  font-family: $fontFamily;
+  &:enabled:focus{
+    box-shadow: none;
+  }
+}
+
+
 .form-select {
   background-position: left 0.75rem center;
   padding: 0.375rem 0.375rem 0.375rem 2.25rem;
+}
+.missions-list{
+  .workspace-menu{
+    .p-dropdown{
+      min-width: 250px;
+    }
+  }
+
+  .p-dropdown {
+    height: 45px;
+    border: 0;
+    &-panel{
+      right: 0;
+    }
+    &-item{
+      min-width: 230px;
+      word-wrap:break-word;
+      white-space: normal !important;
+
+    }
+    &:not(.p-disabled).p-focus{
+      box-shadow: none;
+    }
+  }
+}
+
+
+
+.filter{
+  .p-dropdown{
+    border: 0;
+    &-trigger{
+      display: none;
+    }
+
+  }
+  .p-focus{
+    box-shadow: none !important;
+  }
+}
+.mission-details{
+
+  .p-datepicker-trigger{
+    padding: 0;
+    background: transparent;
+    color: $greyColor;
+    border: 1px solid #ddd;
+    border-radius: 5px !important;
+    &:hover{
+      background: transparent;
+      color: $greyColor;
+      border: 1px solid #ddd;
+      border-radius: 5px !important;
+    }
+  }
 }

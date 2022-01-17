@@ -1,6 +1,6 @@
 <!-- Layout -->
 <mat-sidenav-container autosize class="example-sidenav-container">
-  <mat-sidenav #sideNav mode="side" opened="true" position="end" [mode]="mobileQuery.matches ? 'over' : 'side'"
+  <mat-sidenav #sideNav (closed)="onClose()" [opened]="display" position="end" [mode]="mobileQuery.matches ? 'over' : 'side'"
   [fixedInViewport]="mobileQuery.matches" [ngClass]="{'expandedSideNav':!isExpanded,'collapsedSideNav':isExpanded}">
   <div class="logo pt-4 pb-5">
     <ng-container *ngIf="isExpanded;else logo">
@@ -33,25 +33,18 @@
         <ng-template pTemplate="header"
           ><i class="fas fa-th-large"></i
           ><span *ngIf="isExpanded" class="px-3" routerLink="../workspaces">مساحات العمل</span>
+          <button class="search-btn position-absolute d-inline-block bg-transparent border-0 " *ngIf="isExpanded" (click)="openSearch($event)"> <i class="pi pi-search mt-1"></i></button>
+
         </ng-template>
         <ng-template pTemplate="content">
+          <div class="mb-3" *ngIf="toggleSearch " >
+            <input type="text" class="form-control" placeholder="بحث" (input)="searchInWorkspaces($event)">
+          </div>
           <ul>
-            <li>
-              <a href="" class="text-dark" routerLink="../workspaces/مشروع انتاج الطحينه">
-                <span class="icon" [style.backgroundColor]="'#' + ('random1' | randomcolor)"></span>
-                <span *ngIf="isExpanded" class="px-3">مشروع انتاج الطحينه</span>
-              </a>
-            </li>
-            <li class="pt-3">
-              <a href="" class="text-dark" routerLink="../workspaces/كراسات الشروط والنماذج">
-                <span class="icon" [style.backgroundColor]="'#' + ('random2' | randomcolor)"></span>
-                <span *ngIf="isExpanded" class="px-3">كراسات الشروط والنماذج</span>
-              </a>
-            </li>
-            <li class="pt-3">
-              <a href="" class="text-dark"  routerLink="../workspaces/برمجية المحاسبة">
-                <span class="icon" [style.backgroundColor]="'#' + ('random3' | randomcolor)"></span>
-                <span *ngIf="isExpanded" class="px-3">برمجية المحاسبة</span>
+            <li *ngFor="let workspace of workspaces">
+              <a href="" class="text-dark" routerLink="../workspaces/{{workspace.name}}">
+                <span class="icon" [style.backgroundColor]="'#' + (workspace.name | randomcolor)"></span>
+                <span *ngIf="isExpanded" class="px-3">{{workspace.name}}</span>
               </a>
             </li>
           </ul>
@@ -65,4 +58,7 @@
   </mat-sidenav-content>
 </mat-sidenav-container>
 <!-- ./Layout -->
+<!-- Footer -->
+<app-footer></app-footer>
+<!-- ./Footer -->
 

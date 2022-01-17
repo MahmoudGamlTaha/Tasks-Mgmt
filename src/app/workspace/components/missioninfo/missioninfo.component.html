@@ -1,0 +1,138 @@
+<div class="mission-details">
+  <div class="mission-details-header py-3 border-bottom px-4">
+    <div class="row">
+      <div class="col-3 align-self-center">
+        <span class="border rounded px-2 py-1 d-inline-block mt-3"><i class="pi pi-check"></i> اتمام المهمة</span>
+      </div>
+      <div class="col-6 mission-time-data text-center">
+      <div
+        class="d-inline-block text-center text-grey-color "
+      >
+        <label for="integeronly" class="d-block">Min</label>
+        <p-inputNumber
+          [readonly]="true"
+          [max]="60"
+        ></p-inputNumber>
+      </div>
+      <span class="colon px-1">:</span>
+      <div class="d-inline-block text-center text-grey-color">
+        <label for="integeronly" class="d-block">Hr</label>
+        <p-inputNumber
+          [readonly]="true"
+          [max]="24"
+        ></p-inputNumber>
+      </div>
+
+      <button
+        class="border-0 bg-transparent play"
+        (click)="play()"
+      >
+        <i class="far fa-play-circle"></i>
+      </button>
+      <button
+        class="border-0 bg-transparent text-grey-color replay"
+        (click)="repeat()"
+      >
+        <i class="fas fa-redo-alt"></i>
+      </button>
+      </div>
+      <div class="col-3 align-self-center float-left">
+        <button class="border-0 bg-transparent mt-3 text-grey-color ps-2"><i class="fas fa-link"></i></button>
+        <button class="border-0 bg-transparent mt-3 text-grey-color ps-2"><i class="pi pi-paperclip"></i></button>
+        <div class="btn-group ps-2" dropdown>
+          <button id="button-basic" dropdownToggle type="button" class="bg-transparent text-grey-color border-0"
+                  aria-controls="dropdown-basic">
+                  <i class="fas fa-ellipsis-h"></i>
+          </button>
+          <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+              role="menu" aria-labelledby="button-basic">
+            <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+            </li>
+          </ul>
+        </div>
+        <button class="border-0 bg-transparent mt-3 text-grey-color" (click)="closeModal()">
+          <i class="pi pi-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="mission-details-body py-4 px-4">
+    <h2 class="font-weight-bold text-dark">{{ title }}</h2>
+    <p class="user">
+      <span class="text-grey-color ps-4">المسئول</span>
+      <span>
+        <img src="../../assets/imgs/user.png" alt="" class="img-fluid" />
+         احمد رمزي
+      </span>
+    </p>
+    <p class="date">
+      <span class="text-grey-color ps-4">الموعد النهائي</span>
+      <p-calendar [inputStyle]="{'width':'0px', 'border':'0'}" [(ngModel)]="date" dateFormat="dd.mm.yy"
+      [showIcon]="true" icon="pi pi-calendar"></p-calendar>
+      <span *ngIf="!date" class="text-grey-color px-3">لم يتم التحديد بعد</span>
+      <span *ngIf="date" class="px-3">{{date |date: 'dd/MM/yyyy'}}</span>
+
+      <span class="px-3">
+        <span class="alert alert-success"> طبيعي</span>
+      </span>
+    </p>
+    <p class="workspace">
+      <span class="text-grey-color ps-4">المشروع</span>
+      <span>
+        <span
+      class="icon pe-2"
+      [style.backgroundColor]="
+        '#' + (title | randomcolor)
+      "
+    ></span>
+        مشروع انتاج الطحينة
+      </span>
+    </p>
+    <p class="description">
+      <span class="text-grey-color ps-4">التوصيف</span>
+      <span class="pb-3">
+        <textarea rows="3" placeholder="يمكنك إضافة المزيد من التوصيفات والتفاصيل هنا .." class="w-100 border-0"></textarea>
+      </span>
+    </p>
+    <button class="border py-1 px-3 bg-white rounded"><i class="pi pi-plus text-"></i> اضافة مهام فرعية</button>
+  </div>
+  <div class="mission-details-footer py-3 px-4">
+    <h3 class="user font-weight-bold">
+      <img src="../../assets/imgs/user.png" alt="" class="img-fluid" />
+        محمد أشرف أنشأ هذة المهمة.
+        <span class="text-grey-color font-weight-bold">الجمعة. أكتوبر ٢ - ٢٠٢١</span>
+    </h3>
+    <div class="comments py-3">
+      <div class="mb-3 row">
+        <div class="col-sm-1">
+          <label  class="user form-label"><img src="../../assets/imgs/user.png" alt="" class="img-fluid" /></label>
+        </div>
+        <div class="col-sm-11">
+          <textarea class="form-control" rows="3" placeholder="يمكنك إضافة سؤال أو أي تعليقات هنا .. "></textarea>
+        </div>
+      </div>
+      <div class="comment border-bottom ">
+        <span  class="user"><img src="../../assets/imgs/user.png" alt="" class="img-fluid" /> <span class="px-2">احمد رمزي</span> <span class="comment-time text-grey-color">2/2/2022</span></span>
+        <div class="comment-text mt-2">
+          <p class="pe-5">تعليق</p>
+        </div>
+      </div>
+    </div>
+    <div class="members py-3">
+      <span>المشاركين</span>
+      <span class="user px-1">
+        <img src="../../assets/imgs/user.png" alt="" class="img-fluid" />
+      </span>
+      <span class="user px-1">
+        <img src="../../assets/imgs/user.png" alt="" class="img-fluid" />
+      </span>
+      <span class="user px-1">
+        <i class="pi pi-plus"></i>
+      </span>
+    </div>
+  </div>
+</div>

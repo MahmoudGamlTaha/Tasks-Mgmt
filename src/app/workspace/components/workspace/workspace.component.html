@@ -1,12 +1,10 @@
 <p-card>
   <div class="workspace p-3">
     <div
-      class="workspace-header px-3"
-
-    >
+      class="workspace-header px-3">
       <h3>
-        <span class="icon" [style.backgroundColor]="'#' + ('random1' | randomcolor)"></span>
-        <span class="px-2 font-weight-bold">مشروع انتاج الطحينه</span>
+        <span class="icon" [style.backgroundColor]="'#' + (workspace.name | randomcolor)"></span>
+        <span class="px-2 font-weight-bold"> {{workspace.name}}</span>
         <div class="btn-group float-left" dropdown>
           <button id="button-basic" dropdownToggle type="button" class="bg-transparent text-grey-color border-0"
                   aria-controls="dropdown-basic">

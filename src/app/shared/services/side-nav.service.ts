@@ -6,15 +6,22 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SideNavService {
   private isExpanded = new BehaviorSubject<boolean>(true);
-  currentMessage = this.isExpanded.asObservable();
+  currentExpandStatus = this.isExpanded.asObservable();
+
   private param = new BehaviorSubject<string>('');
   currentParam = this.param.asObservable();
-  constructor() { }
-  changeMessage(message: boolean) {
 
-    this.isExpanded.next(message)
+  private display = new BehaviorSubject<boolean>(true);
+  currentDisplayStatus = this.display.asObservable();
+
+  constructor() { }
+  changeExpandStatus(status: boolean) {
+    this.isExpanded.next(status)
   }
   changeParam(value:string){
     this.param.next(value)
+  }
+  changeDisplayStatus(status:boolean){
+    this.display.next(status)
   }
 }

@@ -13,6 +13,7 @@
 .play {
   font-size: 25px;
   cursor: pointer;
+  color:#4BBF7D;
 }
 
 .replay {
@@ -21,4 +22,42 @@
 }
 .check{
   font-size: 20px;
+}
+
+
+tr{
+  background: #fff !important;
+  &:not(:first-of-type){
+    td{
+      border-top-width: 1px !important;
+    }
+  }
+
+
+  .reorder-icon{
+    opacity: 0;
+    transition: opacity .4s ease-in-out;
+  }
+  &:hover{
+    td{
+      &:not(tr){
+        background: $midGreenColor !important;
+      }
+    }
+    .reorder-icon{
+      opacity: 1;
+    }
+  }
+
+
+}
+
+tr.row-expansion{
+  td{
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+  }
+}
+.total-time{
+  font-size: 14px  !important;
 }

@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
   constructor(private sideNavService:SideNavService) { }
 
   ngOnInit(): void {
-    this.sideNavService.currentMessage.subscribe(value=> this.isExpanded = value)
+    this.sideNavService.currentExpandStatus.subscribe(value=> this.isExpanded = value)
   }
 
 }

@@ -9,6 +9,7 @@ import { SideNavService } from '../../services/side-nav.service';
 })
 export class HeaderComponent implements OnInit {
   isExpanded: boolean = true;
+  display:boolean = true;
   routerUrl!: string;
   notifications!: [];
   selectednotification!: any;
@@ -34,7 +35,8 @@ export class HeaderComponent implements OnInit {
 
   toggleNav() {
     this.isExpanded = !this.isExpanded;
-    this.sidenavService.changeMessage(this.isExpanded)
+    this.sidenavService.changeExpandStatus(this.isExpanded)
+    this.sidenavService.changeDisplayStatus(true)
   }
 }
 

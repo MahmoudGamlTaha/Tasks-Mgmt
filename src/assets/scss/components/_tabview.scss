@@ -13,6 +13,11 @@
       .p-tabview-nav-link {
         color: $greyColor !important;
 
+        // Extra small devices (portrait phones, less than 576px)
+        @media (max-width: 575px) {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
       }
     }
 

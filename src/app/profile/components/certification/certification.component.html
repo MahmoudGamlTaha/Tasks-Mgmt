@@ -1,45 +1,150 @@
-<form>
-  <div class="mb-3">
-    <label for="certification" class="form-label">اسم الشهادة <span class="text-danger">*</span></label>
-    <input type="text" class="form-control" id="certification" aria-describedby="certificationHelp" placeholder="شهاده برمجه المواقع">
-    <!-- <div id="sideHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-  </div>
-  <div class="mb-3">
-    <label for="certificationSide" class="form-label">جهة الشهادة <span class="text-danger">*</span></label>
-    <input type="text" class="form-control" id="certificationSide" aria-describedby="certificationSideHelp" placeholder="بكالرويس الهندسه الصناعية والاداره">
-    <!-- <div id="certificationSideHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-  </div>
-  <div class="row">
-    <div class="col-lg-6">
-      <div class="mb-3">
-        <label for="startDate" class="form-label">تاريخ الحصول</label>
-        <input type="date" class="form-control" id="startDate" aria-describedby="startDateHelp">
-        <!-- <div id="startDateHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+<div class="px-4 pb-4">
+  <form (ngSubmit)="onSubmit()" [formGroup]="addCertificationForm">
+    <div class="mb-3">
+      <label for="certification" class="form-label"
+        >اسم الشهادة <span class="text-danger">*</span></label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="certification"
+        aria-describedby="certificationHelp"
+        placeholder="شهاده برمجه المواقع"
+        formControlName="name"
+        [ngClass]="{ 'border-danger': addCertificationForm.get('name')?.touched }"
+      />
+      <div
+        *ngIf="
+          addCertificationForm.get('name')?.invalid &&
+          addCertificationForm.get('name')?.errors &&
+          (addCertificationForm.get('name')?.dirty ||
+            addCertificationForm.get('name')?.touched)
+        "
+      >
+        <div
+          class="form-text text-danger"
+          *ngIf="addCertificationForm.controls['name']?.errors?.['required']"
+        >
+          حقل اسم الشهادة مطلوب
+        </div>
       </div>
     </div>
-    <div class="col-lg-6">
-      <div class="mb-3">
-        <label for="endDate" class="form-label">تاريخ الانتهاء</label>
-        <input type="date" class="form-control" id="endDate" aria-describedby="endDateHelp">
-        <!-- <div id="endDateHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+    <div class="mb-3">
+      <label for="certificationSide" class="form-label"
+        >جهة الشهادة <span class="text-danger">*</span></label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="certificationSide"
+        aria-describedby="certificationSideHelp"
+        placeholder="بكالرويس الهندسه الصناعية والاداره"
+        formControlName="certificationSide"
+        [ngClass]="{ 'border-danger': addCertificationForm.get('certificationSide')?.touched }"
+      />
+      <div
+        *ngIf="
+          addCertificationForm.get('certificationSide')?.invalid &&
+          addCertificationForm.get('certificationSide')?.errors &&
+          (addCertificationForm.get('certificationSide')?.dirty ||
+            addCertificationForm.get('certificationSide')?.touched)
+        "
+      >
+        <div
+          class="form-text text-danger"
+          *ngIf="addCertificationForm.controls['certificationSide']?.errors?.['required']"
+        >
+          حقل جهة الشهادة مطلوب
+        </div>
       </div>
     </div>
-  </div>
-  <div class="mb-3">
-    <label for="certificationNumber" class="form-label">رقم الشهاده المرجعي</label>
-    <input type="text" class="form-control" id="certificationNumber" aria-describedby="certificationNumberHelp" placeholder="29712B261">
-    <!-- <div id="certificationNumberHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-  </div>
-  <div class="mb-3">
-    <label for="certificationLink" class="form-label">لينك الوصول للشهادة</label>
-    <input type="text" class="form-control" id="certificationLink" aria-describedby="certificationLinkHelp" placeholder="https://www.google.com/29712B261">
-    <!-- <div id="certificationLinkHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-  </div>
-  <div class="mb-3">
-    <label for="description" class="form-label">وصف محتوي الشهادة</label>
-    <textarea class="form-control" id="description" rows="5" placeholder="يمكنك إضافة توصيف الشهادة ومحتواها هنا .. "></textarea>
-  </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="mb-3">
+          <label for="startDate" class="form-label">تاريخ الحصول <span class="text-danger">*</span></label>
+          <input
+            type="date"
+            class="form-control"
+            id="startDate"
+            aria-describedby="startDateHelp"
+            formControlName="startDate"
+            [ngClass]="{ 'border-danger': addCertificationForm.get('startDate')?.touched }"
+          />
+          <div
+        *ngIf="
+          addCertificationForm.get('startDate')?.invalid &&
+          addCertificationForm.get('startDate')?.errors &&
+          (addCertificationForm.get('startDate')?.dirty ||
+            addCertificationForm.get('startDate')?.touched)
+        "
+      >
+        <div
+          class="form-text text-danger"
+          *ngIf="addCertificationForm.controls['startDate']?.errors?.['required']"
+        >
+          حقل  تاريخ الحصول مطلوب
+        </div>
+      </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="mb-3">
+          <label for="endDate" class="form-label">تاريخ الانتهاء</label>
+          <input
+            type="date"
+            class="form-control"
+            id="endDate"
+            aria-describedby="endDateHelp"
+            formControlName="endDate"
+          />
 
-  <button type="submit" class="border-success rounded text-green-color bg-white px-5 py-2">حفظ</button>
-</form>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="certificationNumber" class="form-label"
+        >رقم الشهاده المرجعي</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="certificationNumber"
+        aria-describedby="certificationNumberHelp"
+        placeholder="29712B261"
+        formControlName="certificationNumber"
+      />
 
+    </div>
+    <div class="mb-3">
+      <label for="certificationLink" class="form-label"
+        >لينك الوصول للشهادة</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="certificationLink"
+        aria-describedby="certificationLinkHelp"
+        placeholder="https://www.google.com/29712B261"
+        formControlName="certificationLink"
+      />
+
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">وصف محتوي الشهادة</label>
+      <textarea
+        class="form-control"
+        id="description"
+        rows="5"
+        placeholder="يمكنك إضافة توصيف الشهادة ومحتواها هنا .. "
+        formControlName="description"
+      ></textarea>
+    </div>
+
+    <button
+      type="submit"
+      class="border-success rounded text-green-color bg-white px-5 py-2"
+    >
+      حفظ
+    </button>
+  </form>
+</div>

@@ -1,7 +1,20 @@
-<form>
-  <div class="mb-3">
-    <textarea class="form-control" id="brief" rows="5" placeholder="يمكنك الكتابة والتعديل هنا "></textarea>
-  </div>
 
-  <button type="submit" class="border-success rounded text-green-color bg-white px-5 py-2">حفظ</button>
-</form>
+
+<div class="px-4 pb-4">
+  <form (ngSubmit)="onSubmit()" [formGroup]="addBriefForm">
+    <div class="mb-3">
+      <textarea class="form-control" id="brief" rows="5" placeholder="يمكنك الكتابة والتعديل هنا "[ngClass]="{ 'border-danger': addBriefForm.get('brief')?.touched }" formControlName="brief"></textarea>
+      <div
+          *ngIf="
+          addBriefForm.get('brief')?.invalid &&
+          addBriefForm.get('brief')?.errors &&
+            (addBriefForm.get('brief')?.dirty || addBriefForm.get('brief')?.touched)
+          "
+        >
+          <div class="form-text text-danger" *ngIf="addBriefForm.controls['brief']?.errors?.['required']">حقل النبذة الشخصية مطلوب</div>
+        </div>
+    </div>
+
+    <button type="submit" class="border-success rounded text-green-color bg-white px-5 py-2">حفظ</button>
+  </form>
+</div>

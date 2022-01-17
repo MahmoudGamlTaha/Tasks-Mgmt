@@ -1,15 +1,17 @@
 <!-- Header -->
-<div class="bg-white shadow-sm py-3 px-4 bg-green-color header">
+<div class="bg-white shadow-sm py-2 px-4 bg-green-color header">
   <div class="row">
-    <div class="col-xl-9 col-md-6 order-md-1 order-2">
+    <div class="col-xl-9 col-md-6 order-md-1 order-2 mt-1">
+
       <h2 class="text-white d-inline-block pl-3 mb-2">
-        <i class="fas fa-th pl-5" (click)="toggleNav()"></i> إداره المهام
+        <button class="border border-white bg-transparent text-white rounded-pill toggle-btn ms-3"(click)="toggleNav()"><i class="pi" [ngClass]="{'pi-arrow-right':isExpanded,'pi-arrow-left':!isExpanded}"></i></button>
+        <i class="fas fa-th pl-5"></i> إداره المهام
         والماليات
       </h2>
       <p class="mb-0 header-path">
         <span class="text-white d-inline-block title">برمجيه اداره المهام</span>
         <span class="text-white"
-          ><i class="fas fa-chevron-circle-left px-1"></i>{{ routerUrl }}</span
+          ><i class="pi pi-chevron-circle-left px-1 align-middle"></i>{{ routerUrl }}</span
         >
       </p>
     </div>

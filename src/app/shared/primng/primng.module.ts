@@ -20,10 +20,12 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
 import {ToastModule} from 'primeng/toast';
 import {PanelModule} from 'primeng/panel';
-import {MenuModule} from 'primeng/menu';
+import {DropdownModule} from 'primeng/dropdown';
 import {InputTextModule} from 'primeng/inputtext';
-import {InputTextareaModule} from 'primeng/inputtextarea';
 import {CalendarModule} from 'primeng/calendar';
+
+import {MenuModule} from 'primeng/menu';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 const primengModules = [
   ButtonModule,
   DividerModule,
@@ -43,10 +45,11 @@ const primengModules = [
   HttpClientModule,
   ToastModule,
   PanelModule,
-  MenuModule,
+  DropdownModule,
   InputTextModule,
-  InputTextareaModule,
-  CalendarModule
+  CalendarModule,
+  // MenuModule,
+  // InputTextareaModule,
 ];
 
 @NgModule({

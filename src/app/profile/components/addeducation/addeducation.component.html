@@ -1,45 +1,178 @@
-<form>
-  <div class="mb-3">
-    <label for="side" class="form-label">الجهة <span class="text-danger">*</span></label>
-    <input type="text" class="form-control" id="side" aria-describedby="sideHelp" placeholder="جامعة النيل">
-    <!-- <div id="sideHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-  </div>
-  <div class="mb-3">
-    <label for="degree" class="form-label">الدرجه العلمية <span class="text-danger">*</span></label>
-    <input type="text" class="form-control" id="side" aria-describedby="degreeHelp" placeholder="بكالرويس الهندسه الصناعية والاداره">
-    <!-- <div id="degreeHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-  </div>
-  <div class="mb-3">
-    <label for="side" class="form-label">مجال الدراسة <span class="text-danger">*</span></label>
-    <input type="text" class="form-control" id="side" aria-describedby="sideHelp" placeholder="الهندسه والعلوم التطبيقيه">
-    <!-- <div id="sideHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-  </div>
-  <div class="row">
-    <div class="col-lg-6">
-      <div class="mb-3">
-        <label for="startDate" class="form-label">تاريخ البداية</label>
-        <input type="date" class="form-control" id="startDate" aria-describedby="startDateHelp">
-        <!-- <div id="startDateHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+<div class="px-4 pb-4">
+  <form (ngSubmit)="onSubmit()" [formGroup]="addEducationForm">
+    <div class="mb-3">
+      <label for="side" class="form-label"
+        >الجهة <span class="text-danger">*</span></label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="side"
+        aria-describedby="sideHelp"
+        placeholder="جامعة النيل"
+        formControlName="side"
+        [ngClass]="{ 'border-danger': addEducationForm.get('side')?.touched }"
+      />
+      <div
+        *ngIf="
+          addEducationForm.get('side')?.invalid &&
+          addEducationForm.get('side')?.errors &&
+          (addEducationForm.get('side')?.dirty ||
+            addEducationForm.get('side')?.touched)
+        "
+      >
+        <div
+          class="form-text text-danger"
+          *ngIf="addEducationForm.controls['side']?.errors?.['required']"
+        >
+          حقل الجهة مطلوب
+        </div>
       </div>
     </div>
-    <div class="col-lg-6">
-      <div class="mb-3">
-        <label for="endDate" class="form-label">تاريخ الانتهاء</label>
-        <input type="date" class="form-control" id="endDate" aria-describedby="endDateHelp">
-        <!-- <div id="endDateHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+    <div class="mb-3">
+      <label for="degree" class="form-label"
+        >الدرجه العلمية <span class="text-danger">*</span></label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="degree"
+        aria-describedby="degreeHelp"
+        placeholder="بكالرويس الهندسه الصناعية والاداره"
+        formControlName="degree"
+        [ngClass]="{ 'border-danger': addEducationForm.get('degree')?.touched }"
+      />
+      <div
+        *ngIf="
+          addEducationForm.get('degree')?.invalid &&
+          addEducationForm.get('degree')?.errors &&
+          (addEducationForm.get('degree')?.dirty ||
+            addEducationForm.get('degree')?.touched)
+        "
+      >
+        <div
+          class="form-text text-danger"
+          *ngIf="addEducationForm.controls['degree']?.errors?.['required']"
+        >
+          حقل الدرجة العلمية مطلوب
+        </div>
       </div>
     </div>
-  </div>
-  <div class="mb-3">
-    <label for="gpa" class="form-label">التقدير العام</label>
-    <input type="text" class="form-control" id="gpa" aria-describedby="gpaHelp" placeholder="جيد جدا">
-    <!-- <div id="gpaHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-  </div>
-  <div class="mb-3">
-    <label for="description" class="form-label">الوصف والانشطة</label>
-    <textarea class="form-control" id="description" rows="5" placeholder="يمكنك اضافة توصيف الدرجه العلمية هنا "></textarea>
-  </div>
+    <div class="mb-3">
+      <label for="side" class="form-label"
+        >مجال الدراسة <span class="text-danger">*</span></label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="side"
+        aria-describedby="sideHelp"
+        placeholder="الهندسه والعلوم التطبيقيه"
+        formControlName="fieldStudy"
+        [ngClass]="{ 'border-danger': addEducationForm.get('fieldStudy')?.touched }"
 
-  <button type="submit" class="border-success rounded text-green-color bg-white px-5 py-2">حفظ</button>
-</form>
+      />
+      <div
+        *ngIf="
+          addEducationForm.get('fieldStudy')?.invalid &&
+          addEducationForm.get('fieldStudy')?.errors &&
+          (addEducationForm.get('fieldStudy')?.dirty ||
+            addEducationForm.get('fieldStudy')?.touched)
+        "
+      >
+        <div
+          class="form-text text-danger"
+          *ngIf="addEducationForm.controls['fieldStudy']?.errors?.['required']"
+        >
+          حقل مجال الدراسة مطلوب
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="mb-3">
+          <label for="startDate" class="form-label">تاريخ البداية</label>
+          <input
+            type="date"
+            class="form-control"
+            id="startDate"
+            aria-describedby="startDateHelp"
+            formControlName="startDate"
+            [ngClass]="{ 'border-danger': addEducationForm.get('startDate')?.touched }"
+          />
+          <div
+            *ngIf="
+              addEducationForm.get('startDate')?.invalid &&
+              addEducationForm.get('startDate')?.errors &&
+              (addEducationForm.get('startDate')?.dirty ||
+                addEducationForm.get('startDate')?.touched)
+            "
+          >
+            <div
+              class="form-text text-danger"
+              *ngIf="addEducationForm.controls['startDate']?.errors?.['required']"
+            >
+              حقل تاريخ البداية مطلوب
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="mb-3">
+          <label for="endDate" class="form-label">تاريخ الانتهاء</label>
+          <input
+            type="date"
+            class="form-control"
+            id="endDate"
+            aria-describedby="endDateHelp"
+            formControlName="endDate"
+            [ngClass]="{ 'border-danger': addEducationForm.get('endDate')?.touched }"
+          />
+          <div
+            *ngIf="
+              addEducationForm.get('endDate')?.invalid &&
+              addEducationForm.get('endDate')?.errors &&
+              (addEducationForm.get('endDate')?.dirty ||
+                addEducationForm.get('endDate')?.touched)
+            "
+          >
+            <div
+              class="form-text text-danger"
+              *ngIf="addEducationForm.controls['endDate']?.errors?.['required']"
+            >
+              حقل تاريخ الانتهاء مطلوب
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="gpa" class="form-label">التقدير العام</label>
+      <input
+        type="text"
+        class="form-control"
+        id="gpa"
+        aria-describedby="gpaHelp"
+        placeholder="جيد جدا"
+        formControlName="gpa"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">الوصف والانشطة</label>
+      <textarea
+        class="form-control"
+        id="description"
+        rows="5"
+        placeholder="يمكنك اضافة توصيف الدرجه العلمية هنا "
+        formControlName="description"
+      ></textarea>
+    </div>
 
+    <button
+      type="submit"
+      class="border-success rounded text-green-color bg-white px-5 py-2"
+    >
+      حفظ
+    </button>
+  </form>
+</div>

@@ -34,7 +34,7 @@
       >
         <td
           *ngFor="let columnName of tableColumns"
-          class="text-end border-start position-relative"
+          class="text-end border-start position-relative mission-time-data "
         >
           <ng-container *ngIf="columnName != 'hoursCount'; else hoursTemplate">
             <ng-container *ngIf="columnName != 'name'; else greenLabel">
@@ -48,7 +48,7 @@
             </ng-template>
           </ng-container>
           <ng-template #hoursTemplate>
-            <div class="d-inline-block text-center text-grey-color">
+            <div class="d-inline-block text-center text-grey-color ">
               <label for="integeronly" class="d-block">Min</label>
               <p-inputNumber
                 [(ngModel)]="row['minutes']"
@@ -82,22 +82,25 @@
         >
           <ng-container *ngIf="columnName == 'total'; else complaint">
             <p>
-              إجمالي عدد ساعات الشهر المعتمدة :
+              <span>إجمالي عدد ساعات الشهر المعتمدة :</span>
+
               <span class="text-green-color font-weight-bold">{{
                 row["total"].totalHoursInMonths
-              }}</span>
+              }} ساعة</span>
             </p>
             <p>
-              إجمالي عدد ساعات الشهر المعتمدة :
+              <span>سعر الساعة المعتمدة :</span>
+
               <span class="text-green-color font-weight-bold">{{
                 row["total"].priceHour
-              }}</span>
+              }} ريال سعودي</span>
             </p>
             <p>
-              إجمالي عدد ساعات الشهر المعتمدة :
+              <span>إجمالي دخل الشهر :</span>
+
               <span class="text-green-color font-weight-bold">{{
                 row["total"].totalIncome
-              }}</span>
+              }} ريال سعودي</span>
             </p>
           </ng-container>
 

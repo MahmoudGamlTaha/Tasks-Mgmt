@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 export class GoalsComponent implements OnInit {
   toggleModal:boolean = false;
   selectSection!:string;
-  title!:string;
-  titleDescription!:string;
+  title:string = '';
+  titleDescription:string = '';
   constructor() { }
 
   ngOnInit() {

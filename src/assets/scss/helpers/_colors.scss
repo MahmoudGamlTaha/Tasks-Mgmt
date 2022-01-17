@@ -1,4 +1,4 @@
-$colors:('green':$greenColor,'grey':$greyColor,'lightgreen':$lightGreenColor);
+$colors:('green':$greenColor,'grey':$greyColor,'lightgreen':$lightGreenColor,'midgreen':$midGreenColor);
 
 // Colors For text & background
 @each $name,$color in $colors {

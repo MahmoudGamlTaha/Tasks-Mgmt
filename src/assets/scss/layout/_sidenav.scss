@@ -5,7 +5,7 @@ mat-sidenav-container {
   li{
     border: 4px solid transparent;
     background: #fff;
-    transition: all 0.4s ease-in-out;
+    transition: background 0.4s ease-in-out,border;
     i {
       border-radius: 5px;
       padding:10px ;
@@ -14,12 +14,12 @@ mat-sidenav-container {
     }
     &:hover {
       border-right: 4px solid $greenColor;
-      background: #1EB05D1A;
+      background: $midGreenColor;
     }
   }
   li.active{
     border-right: 4px solid $greenColor;
-    background: #1EB05D1A;
+    background: $midGreenColor;
   }
 }
 .expandedSideNav{
@@ -28,7 +28,9 @@ mat-sidenav-container {
       border-radius: 5px;
       padding:10px ;
       margin-right: 0.35rem;
-      transition: all 0.4s ease-in-out;
+      background: #fff;
+      color: #000;
+      transition: background 0.4s ease-in-out,color 0.4s ease-in-out;
     }
     &:hover {
       i {
@@ -75,7 +77,11 @@ mat-sidenav-container {
 }
 .p-accordion .p-accordion-content {
   border: 0;
-  padding: 0 1.25rem;
+  padding: 0 ;
+  a{
+    display: inline-block;
+    padding:0.45rem 1.25rem;
+  }
 }
 
 .icon {
@@ -137,5 +143,12 @@ h1.example-app-name {
 }
 
 .mat-drawer.mat-drawer-side{
-  z-index: 1 !important;
+  z-index: -1 !important;
+  max-width: 263px;
+}
+.mat-drawer-content{
+  z-index: -1 !important;
+}
+.search-btn{
+  left: 30px;
 }

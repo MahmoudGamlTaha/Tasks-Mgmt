@@ -1,52 +1,159 @@
-<form>
+<form (ngSubmit)="onSubmit()" [formGroup]="userInfoForm">
   <div class="row">
-    <div class="col-lg-6 border-start">
+    <div class="col-lg-6 border-start order-md-1 order-2">
       <div class="mb-3">
-        <label for="name" class="form-label">أسم الإستشاري بالكامل <span class="text-danger">*</span></label>
-        <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="علي حسين">
-        <!-- <div id="nameHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+        <label for="name" class="form-label"
+          >أسم الإستشاري بالكامل <span class="text-danger">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          [ngClass]="{ 'border-danger': userInfoForm.get('name')?.touched }"
+          aria-describedby="nameHelp"
+          placeholder="علي حسين"
+          formControlName="name"
+        />
+        <div
+          *ngIf="
+            userInfoForm.get('name')?.invalid &&
+            userInfoForm.get('name')?.errors &&
+            (userInfoForm.get('name')?.dirty ||
+              userInfoForm.get('name')?.touched)
+          "
+        >
+          <div
+            id="nameHelp"
+            class="form-text text-danger"
+            *ngIf="userInfoForm.controls['name']?.errors?.['required']"
+          >
+            حقل الاسم مطلوب
+          </div>
+          <div
+            id="nameHelp"
+            class="form-text text-danger"
+            *ngIf="userInfoForm.controls['name']?.errors?.['pattern']"
+          >
+            حقل الاسم حروف فقط
+          </div>
+        </div>
       </div>
       <div class="mb-3">
-        <label for="email" class="form-label">إيميل التواصل <span class="text-danger">*</span></label>
-        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Ali@yahoo.com">
-        <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+        <label for="email" class="form-label"
+          >إيميل التواصل <span class="text-danger">*</span></label
+        >
+
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          [ngClass]="{ 'border-danger': userInfoForm.get('email')?.touched }"
+          aria-describedby="emailHelp"
+          placeholder="Ali@yahoo.com"
+          formControlName="email"
+        />
+
+        <div
+          *ngIf="
+            userInfoForm.get('email')?.invalid &&
+            userInfoForm.get('email')?.errors &&
+            (userInfoForm.get('email')?.dirty ||
+              userInfoForm.get('email')?.touched)
+          "
+        >
+          <div id="emailHelp" class="form-text text-danger" *ngIf="userInfoForm.controls['email']?.errors?.['required']">
+            حقل إيميل التواصل مطلوب
+          </div>
+          <div id="emailHelp" class="form-text text-danger" *ngIf="userInfoForm.controls['email']?.errors?.['email']">
+            إيميل التواصل غير صحيح
+          </div>
+        </div>
       </div>
       <div class="mb-3">
-        <label for="age" class="form-label" >السن <span class="text-danger">*</span></label>
-        <select class="form-select  w-25" aria-label="Default select example">
+        <label for="age" class="form-label"
+          >السن <span class="text-danger">*</span></label
+        >
+        <select
+          class="form-select w-25"
+          aria-label="Default select example"
+          formControlName="age"
+          [ngClass]="{ 'border-danger': userInfoForm.get('age')?.touched }"
+        >
           <option selected>إختار</option>
           <option value="1">One</option>
           <option value="2">Two</option>
           <option value="3">Three</option>
         </select>
-
+        <div
+          *ngIf="
+            userInfoForm.get('age')?.invalid &&
+            userInfoForm.get('age')?.errors &&
+            (userInfoForm.get('age')?.dirty || userInfoForm.get('age')?.touched)
+          "
+        >
+          <div id="emailHelp" class="form-text text-danger" *ngIf="userInfoForm.controls['age']?.errors?.['required']">حقل السن مطلوب</div>
+        </div>
       </div>
       <div class="mb-3">
-        <label for="address" class="form-label">عنوان التواصل <span class="text-danger">*</span></label>
-        <input type="text" class="form-control" id="address" aria-describedby="addressHelp" placeholder="123 6th october,cairo,egypt">
-        <!-- <div id="addressHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+        <label for="address" class="form-label"
+          >عنوان التواصل <span class="text-danger">*</span></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="address"
+          aria-describedby="addressHelp"
+          placeholder="123 6th october,cairo,egypt"
+          formControlName="address"
+          [ngClass]="{ 'border-danger': userInfoForm.get('address')?.touched }"
+        />
+        <div
+          *ngIf="
+            userInfoForm.get('address')?.invalid &&
+            userInfoForm.get('address')?.errors &&
+            (userInfoForm.get('address')?.dirty ||
+              userInfoForm.get('address')?.touched)
+          "
+        >
+          <div id="addressHelp" class="form-text text-danger" *ngIf="userInfoForm.controls['address']?.errors?.['required']">
+            حقل العنوان مطلوب
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-lg-6 align-self-center">
-      <input type="file" #profileImg class="d-none" (change)="readURL($event);">
-      <div class="upload-img" (click)="profileImg.click()" >
-        <ng-container *ngIf="imageSrc;else noImg">
-          <img [src]="imageSrc" alt="" class="img-profile">
+    <div class="col-lg-6 align-self-center order-md-2 order-1 mb-4">
+      <input
+        type="file"
+        #profileImg
+        class="d-none"
+        (change)="readURL($event)"
+        formControlName="image"
+      />
+      <div
+        *ngIf="
+          userInfoForm.get('image')?.invalid &&
+          userInfoForm.get('image')?.errors &&
+          (userInfoForm.get('image')?.dirty ||
+            userInfoForm.get('image')?.touched)
+        "
+      >
+        <div id="imageHelp" class="form-text text-danger mb-4 text-center" *ngIf="userInfoForm.controls['image']?.errors?.['required']">
+          الصورة الشخصية مطلوب
+        </div>
+      </div>
+      <div class="upload-img" (click)="profileImg.click()">
+        <ng-container *ngIf="imageSrc; else noImg">
+          <img [src]="imageSrc" alt="" class="img-profile" />
         </ng-container>
 
-
-        <ng-template #noImg>
-          ادرج الملف هنا للرفع
-
-        </ng-template>
+        <ng-template #noImg> ادرج الملف هنا للرفع </ng-template>
       </div>
 
     </div>
   </div>
   <div class="mt-4">
-
-    <button type="submit" class="px-4 py-2 greenBtn rounded-pill"> <i class="fas fa-save"></i> حفظ التغييرات </button>
+    <button type="submit" class="px-4 py-2 greenBtn rounded-pill" [disabled]="">
+      <i class="fas fa-save"></i> حفظ التغييرات
+    </button>
   </div>
-
-
 </form>
