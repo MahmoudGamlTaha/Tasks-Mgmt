@@ -23,14 +23,14 @@
       </h3>
     </div>
     <div class="workspace-info px-3">
-      <p class="missions text-secondary">7 مهام</p>
-      <p class="hours text-secondary font-weight-bold"><span class="text-grey-color">15</span><span>/18 ساعة</span></p>
-      <p-progressBar [value]="10" [showValue]='false'></p-progressBar>
-      <p class="float-left mission-percentage"><span>89%</span></p>
-      <p class="mission-done">
-        <span class="d-block mb-2">معدل الانجاز</span>
-        <span class="font-weight-bold">15/18 <i class="far fa-check-circle text-grey-color"></i></span>
-      </p>
+      <p class="missions text-secondary">{{missionsCount}} مهام</p>
+      <p class="hours text-secondary font-weight-bold"><span class="text-grey-color">15</span><span>/{{workspace.totalHours}} ساعة</span></p>
+        <p-progressBar [value]="10" [showValue]='false'></p-progressBar>
+        <p class="float-left mission-percentage"><span>89%</span></p>
+        <p class="mission-done">
+          <span class="d-block mb-2">معدل الانجاز</span>
+          <span class="font-weight-bold">{{missionsCount}}/{{missionsCount}} <i class="far fa-check-circle text-grey-color"></i></span>
+        </p>
     </div>
   </div>
 </p-card>

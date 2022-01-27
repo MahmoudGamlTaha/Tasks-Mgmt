@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MissionService } from 'src/app/shared/services/mission/mission.service';
+import { WorkspaceService } from 'src/app/shared/services/workspace/workspace.service';
 
 @Component({
   selector: 'app-workspaces',
@@ -8,10 +9,11 @@ import { MissionService } from 'src/app/shared/services/mission/mission.service'
 })
 export class WorkspacesComponent implements OnInit {
   workspaces:any[] = []
-  constructor(private missionService:MissionService) { }
+  constructor(private workspaceService:WorkspaceService) { }
 
   ngOnInit(): void {
-    this.workspaces = this.missionService.getWorkspaces()
+    this.workspaces = this.workspaceService.getWorkspaces()
+    // this.workspaces = this.missionService.getWorkspaces()
   }
 
 }

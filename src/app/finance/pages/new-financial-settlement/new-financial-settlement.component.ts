@@ -9,11 +9,11 @@ import { TableService } from 'src/app/shared/services/table.service';
 })
 export class NewFinancialSettlementComponent implements OnInit {
   data:any[]=[
-    {name:'دراسة المشروع الأوليه 1',creationDate:'20/2/2022',hours:1,minutes:21},
-    {name:'دراسة المشروع الأوليه 2',creationDate:'20/2/2022',hours:2,minutes:23},
-    {name:'دراسة المشروع الأوليه 3',creationDate:'20/2/2022',hours:3,minutes:30},
-    {name:'دراسة المشروع الأوليه 4',creationDate:'20/2/2022',hours:4,minutes:10},
-    {name:'دراسة المشروع الأوليه 5',creationDate:'20/2/2022',hours:5,minutes:43}
+    {name:'دراسة المشروع الأوليه 1',creationDate:'20/2/2022',hours:1,minutes:21,status:1},
+    {name:'دراسة المشروع الأوليه 2',creationDate:'20/2/2022',hours:2,minutes:23,status:1},
+    {name:'دراسة المشروع الأوليه 3',creationDate:'20/2/2022',hours:3,minutes:30,status:1},
+    {name:'دراسة المشروع الأوليه 4',creationDate:'20/2/2022',hours:4,minutes:10,status:1},
+    {name:'دراسة المشروع الأوليه 5',creationDate:'20/2/2022',hours:5,minutes:43,status:1}
   ]
   columns:string[] = ['name','creationDate','hoursCount']
   labels:string[] = ['مهام جاهزه للتسويه','تاريخ الانتهاء','عدد الساعات']

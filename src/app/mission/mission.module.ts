@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MissionRoutingModule } from './mission-routing.module';
 import { MissionComponent } from './components/mission/mission.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { MissionComponent } from './components/mission/mission.component';
   ],
   imports: [
     CommonModule,
-    MissionRoutingModule
+    MissionRoutingModule,
+    SharedModule
   ]
 })
 export class MissionModule { }

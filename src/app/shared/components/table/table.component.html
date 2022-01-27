@@ -160,3 +160,64 @@
   </ng-template>
 </p-table>
 
+<!-- <p-table
+  #dt
+  [value]="tableData"
+  [paginator]="tableData.length < 10 ? false : true"
+  [rows]="10"
+  [showCurrentPageReport]="true"
+  responsiveLayout="stack"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [rowsPerPageOptions]="[10, 25, 50]"
+  [globalFilterFields]="['name']"
+> -->
+  <!-- Header Labels -->
+  <!-- <ng-template pTemplate="header">
+    <tr>
+      <th *ngFor="let label of tableLabels; let i = index" class="text-end">
+        <span [ngClass]="{ 'highlight-label ms-2': i == 0 }">{{ label }} </span
+        ><span *ngIf="countExist && i == 0">{{ tableData.length }} مهام</span>
+      </th>
+    </tr>
+  </ng-template> -->
+  <!-- ./Header Labels -->
+  <!-- Data -->
+  <!-- <ng-template pTemplate="body" let-row>
+    <tr>
+      <td
+        *ngFor="let columnName of tableColumns; let i = index"
+        class="text-end border-start position-relative"> -->
+        <!-- ReOrder Icon -->
+        <!-- <span
+          *ngIf="reOrder && i == 0"
+          class="pi pi-ellipsis-v reorder-icon"
+          [pReorderableRowHandle]="i"
+        ></span> -->
+        <!-- ./ReOrder Icon -->
+        <!-- Check Icon -->
+        <!-- <span *ngIf="i == 0">
+          <i
+            class=" check px-2"
+            [ngClass]="{'fas fa-check-circle text-green-color':  (row['status'] == 1),' pi pi-check':!(row['status'] == 1)}"
+          ></i>
+        </span> -->
+        <!-- ./Check Icon -->
+        <!-- Expand Icon -->
+        <!-- <span [pRowToggler]="row" *ngIf="Expand && i == 0">
+          <button class="border-0 bg-transparent">
+            <i
+              class="fas fa-list-ul text-grey-color"
+            ></i>
+          </button>
+        </span> -->
+        <!-- ./Expand Icon -->
+        <!-- Mission Name -->
+        <!-- <span [ngClass]="{'font-weight-bold text-green-color':i == 0 && row['status']}">
+          {{ row[columnName] }}
+        </span> -->
+        <!-- ./Mission Name -->
+      <!-- </td>
+    </tr>
+  </ng-template> -->
+  <!-- ./Data -->
+<!-- </p-table> -->
